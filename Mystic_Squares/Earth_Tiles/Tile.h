@@ -78,6 +78,8 @@
 
 -(void)emptySpacePermutation:(CGPoint)emptySpace;
 
+-(void)getEmptyPosition:(NSNotification*)notification;
+
 -(void)moveXorY;
 
 -(void)moveEnded;
