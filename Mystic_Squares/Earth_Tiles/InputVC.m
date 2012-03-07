@@ -76,7 +76,10 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	[endTouchEvents addObjectsFromArray:[touches allObjects]];
-	[[NSNotificationCenter defaultCenter] postNotificationName:@"end" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"end" object:nil]; 
+    
+	
 }
 
 #pragma mark unload, dealloc

@@ -57,7 +57,7 @@ static GLfloat positionMatrix[32] = {
 static NSInteger tileVertexSize = 2;
 
 @implementation Tile
-@synthesize startPoint, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, pA, pB, pC, pD, pE, pF;
+@synthesize startPoint, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, pA, pB, pC, pD, pE, pF, totalDistance;
 
 #pragma Mark -
 #pragma Mark Initization Methods
@@ -158,7 +158,9 @@ static NSInteger tileVertexSize = 2;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveXorY) name:@"whichWay" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopMove) name:@"stop" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveEnded) name:@"end" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getEmptyPosition:) name:@"emptySpace" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getEmptyPosition:) name:@"broadcastPosition" object:nil];
+    
+    
     
     NSString *atlasKey = [[NSString alloc] initWithFormat:@"square%i",counter];
     
@@ -178,6 +180,8 @@ static NSInteger tileVertexSize = 2;
     startPoint.y = translation.y;
     
     pointInBounds = NO; firstTile = NO; secondTile = NO; thirdTile = NO; stop = NO;
+    
+     tilesChecked = 0;
 }
 
 #pragma Mark -
@@ -195,7 +199,7 @@ static NSInteger tileVertexSize = 2;
     // check for touches 
     [self handleTouches];
     
-    if (autoMoveSwitch) [self autoMove];
+    //if (autoMoveSwitch) [self autoMove];
     
     [super update];
 }
@@ -276,10 +280,10 @@ static NSInteger tileVertexSize = 2;
 
 -(void)emptySpacePermutation:(CGPoint)emptySpace{
     
-    NSArray *convArray = [[NSArray alloc] initWithObjects:[NSNumber numberWithFloat:translation.x], [NSNumber numberWithFloat:translation.y], nil];
-    
-    NSDictionary *positionDict = [NSDictionary dictionaryWithObject:convArray forKey:@"pass"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"broadcastPosition" object:nil userInfo:positionDict];
+//    NSArray *convArray = [[NSArray alloc] initWithObjects:[NSNumber numberWithFloat:translation.x], [NSNumber numberWithFloat:translation.y], nil];
+//    
+//    NSDictionary *positionDict = [NSDictionary dictionaryWithObject:convArray forKey:@"pass"];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"broadcastPosition" object:nil userInfo:positionDict];
     
 }
 
@@ -296,38 +300,138 @@ static NSInteger tileVertexSize = 2;
 }
 
 -(void)getEmptyPosition:(NSNotification*)notification{
+   
     
-    NSMutableArray* pass = [[notification userInfo] valueForKey:@"pass"];
+    NSMutableArray* passed = [[notification userInfo] valueForKey:@"pass"];
     
-    emptyPosition.x = [[pass objectAtIndex:0] floatValue];
-    emptyPosition.y = [[pass objectAtIndex:1] floatValue];
+    float filledX = [[passed objectAtIndex:0] floatValue];
+    float filledY = [[passed objectAtIndex:1] floatValue];
     
+    NSMutableCharacterSet *positionActor;
+    positionActor = [[NSCharacterSet alphanumericCharacterSet] mutableCopy];
+    
+    if (p0.x == filledX  && p0.y == filledY) {
+        [positionActor addCharactersInString:@"0"];
+    }
+    if (p1.x == filledX  && p1.y == filledY) {
+        [positionActor addCharactersInString:@"1"];
+    }
+    if (p2.x == filledX  && p2.y == filledY) {
+        [positionActor addCharactersInString:@"2"];
+    }
+    if (p3.x == filledX  && p3.y == filledY) {
+        [positionActor addCharactersInString:@"3"];
+    }
+    if (p4.x == filledX  && p4.y == filledY) {
+        [positionActor addCharactersInString:@"4"];
+    }
+    if (p5.x == filledX  && p5.y == filledY) {
+        [positionActor addCharactersInString:@"5"];
+    }
+    if (p6.x == filledX  && p6.y == filledY) {
+        [positionActor addCharactersInString:@"6"];
+    }
+    if (p7.x == filledX  && p7.y == filledY) {
+        [positionActor addCharactersInString:@"7"];
+    }
+    if (p8.x == filledX  && p8.y == filledY) {
+        [positionActor addCharactersInString:@"8"];
+    }
+    if (p9.x == filledX  && p9.y == filledY) {
+        [positionActor addCharactersInString:@"9"];
+    }
+    if (pA.x == filledX  && pA.y == filledY) {
+        [positionActor addCharactersInString:@"A"];
+    }
+    if (pB.x == filledX  && pB.y == filledY) {
+        [positionActor addCharactersInString:@"B"];
+    }
+    if (pC.x == filledX  && pC.y == filledY) {
+        [positionActor addCharactersInString:@"C"];
+    }
+    if (pD.x == filledX  && pD.y == filledY) {
+        [positionActor addCharactersInString:@"D"];
+    }
+    if (pE.x == filledX  && pE.y == filledY) {
+        [positionActor addCharactersInString:@"E"];
+    }
+    if (pF.x == filledX  && pF.y == filledY) {
+        [positionActor addCharactersInString:@"F"];
+    }
+    
+    tilesChecked += 1;
+    if (tilesChecked == 15) {
+        if (![positionActor characterIsMember:0]) {
+            emptyPosition = p0;
+        }
+        if (![positionActor characterIsMember:1]) {
+            emptyPosition = p1;
+        }
+        if (![positionActor characterIsMember:2]) {
+            emptyPosition = p2;
+        }
+        if (![positionActor characterIsMember:3]) {
+            emptyPosition = p3;
+        }
+        if (![positionActor characterIsMember:4]) {
+            emptyPosition = p4;
+        }
+        if (![positionActor characterIsMember:5]) {
+            emptyPosition = p5;
+        }
+        if (![positionActor characterIsMember:6]) {
+            emptyPosition = p6;
+        }
+        if (![positionActor characterIsMember:7]) {
+            emptyPosition = p7;
+        }
+        if (![positionActor characterIsMember:8]) {
+            emptyPosition = p8;
+        }
+        if (![positionActor characterIsMember:9]) {
+            emptyPosition = p9;
+        }
+        if (![positionActor characterIsMember:[@"A" characterAtIndex:0]]) {
+            emptyPosition = pA;
+        }
+        if (![positionActor characterIsMember:[@"B" characterAtIndex:0]]) {
+            emptyPosition = pB;
+        }
+        if (![positionActor characterIsMember:[@"C" characterAtIndex:0]]) {
+            emptyPosition = pC;
+        }
+        if (![positionActor characterIsMember:[@"D" characterAtIndex:0]]) {
+            emptyPosition = pD;
+        }
+        if (![positionActor characterIsMember:[@"E" characterAtIndex:0]]) {
+            emptyPosition = pE;
+        }
+        if (![positionActor characterIsMember:[@"F" characterAtIndex:0]]) {
+            emptyPosition = pF;
+        }
+        NSLog(@"emptyPositionX: %f Y: %f",emptyPosition.x, emptyPosition.y);
+        
+        [positionActor release];
+    }
+    NSLog(@"endtilecount: %i", tilesChecked);
 }
 
 -(void)moveEnded{
     
     //NSLog(@"%f",translation.y);
     NSLog(@"startPoint: %f trans: %f tileNumber: %i",startPoint.x, translation.x, counter);
-    
-   
-    if (singleTap){
-        
-        autoMoveSwitch = YES;
-        return;
-        
-    }
 
     
     //initialize Prof. Bool: http://en.wikipedia.org/wiki/George_Boole = 0;
     firstTile = NO;
     secondTile = NO;
     thirdTile = NO;
-    pointInBounds = NO;
     stop = NO;
+    pointInBounds = NO;
     singleTap = NO;
     xWasBigger = NO;
     moveCount = 0;
-
+    tilesChecked = 0;
     
     // If not fully moved jump to nearest x position.
     if (translation.x < -70.0) {
@@ -356,13 +460,15 @@ static NSInteger tileVertexSize = 2;
         translation.y = 150.0;
     }
     
-    NSArray *convArray = [[NSArray alloc] initWithObjects:[NSNumber numberWithFloat:translation.x], [NSNumber numberWithFloat:translation.y], nil];
-    NSDictionary *positionDict = [NSDictionary dictionaryWithObject:convArray forKey:@"pass"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"broadcastPosition" object:nil userInfo:positionDict];
+//    NSArray *convArray = [[NSArray alloc] initWithObjects:[NSNumber numberWithFloat:translation.x], [NSNumber numberWithFloat:translation.y], nil];
+//    NSDictionary *positionDict = [NSDictionary dictionaryWithObject:convArray forKey:@"pass"];
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"broadcastPosition" object:nil userInfo:positionDict];
     
-   // [convArray release];
-   // [positionDict release];
+    totalDistance.x = 0.0;
+    totalDistance.y = 0.0;
 }
+
+
 
 -(void)moveTile:(CGPoint)touchPoint{
    
@@ -386,15 +492,21 @@ static NSInteger tileVertexSize = 2;
         }
         translation.y += distanceY;
     }
+    totalDistance.x += sqrtf(distanceX * distanceX);
+    totalDistance.y += sqrtf(distanceY * distanceY);
 }
 
 #pragma Mark -
 #pragma Mark Auto Move Methods
 
 -(void)autoMove{
-    if (moveCount < 10 ) {
+    if (moveCount < 5 && !stop) {
+        NSLog(@"emptyx:%f, y: %f", emptyPosition.x, emptyPosition.y);
         
         CGPoint autoMovePoint = CGPointMake(translation.x, translation.y);
+        
+        NSLog(@"autox:%f, y: %f", autoMovePoint.x, autoMovePoint.y);
+        
         
         if (translation.y == emptyPosition.y) {
             xWasBigger = YES;
@@ -420,7 +532,7 @@ static NSInteger tileVertexSize = 2;
     }else {
         autoMoveSwitch = NO;
         singleTap = NO;
-        [self moveEnded];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
     }
     moveCount += 1;
     
@@ -430,13 +542,87 @@ static NSInteger tileVertexSize = 2;
 #pragma Mark Collition Methods
 
 - (void)didCollideWithY:(SceneObject *)sceneObject{
-
-    if (sceneObject.emptyPosition.x == emptyPosition.x) {
+    NSLog(@"tiles321? %i,%i,%i",thirdTile, secondTile, firstTile);
+    NSLog(@"sceneObjectTiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
+    NSLog(@"collidedY");
+    
+    if (sqrtf((translation.y - startPoint.y) * (translation.y - startPoint.y)) > 70) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+    }
+    
+    if (!firstTile && !secondTile && !thirdTile) {
+        secondTile = YES;
+    }
+    if (firstTile) {
+        NSLog(@"firstTile");
+        stop = sceneObject.stop;
+        NSLog(@"Tiles321? %i,%i,%i",thirdTile, secondTile, firstTile);
+        NSLog(@"Tiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
+        if (!sceneObject.secondTile && !sceneObject.thirdTile) {
+            sceneObject.secondTile = YES;
+            sceneObject.thirdTile = NO;
+            NSLog(@"Tiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
+        }
+        if (sceneObject.translation.y == 105.0) {
+            translation.y = 35.0;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+            NSLog(@"Should Stop 1");
+            NSLog(@"stop!? %i",sceneObject.stop);
+        }
+        if (sceneObject.translation.y == -105.0) {
+            translation.y = -35.0;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+            NSLog(@"Should Stop 2");
+            NSLog(@"stop!? %i",sceneObject.stop);
+            NSLog(@"stop!? %i",stop);
+        }
+    }else if(secondTile){
         
-        translation.y += sceneObject.distanceY;
+        NSLog(@"secondTile");
+        if (sceneObject.firstTile && !stop) {
+            distanceY = sceneObject.distanceY;
+            translation.y += (distanceY * kSmoothingDistance);
+            
+        }else if (!sceneObject.firstTile && !sceneObject.secondTile && !sceneObject.thirdTile) {
+            sceneObject.thirdTile = YES;
+        }
+        
+        if (sceneObject.translation.y == 105.0) {
+            translation.y = 35.0;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+            NSLog(@"Should Stop 4");
+            NSLog(@"stop!? %i",sceneObject.stop);
+        }
+        if (sceneObject.translation.y == -105.0) {
+            translation.y = -35.0;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+            NSLog(@"Should Stop 5");
+            NSLog(@"stop!? %i",sceneObject.stop);
+        }
+        self.stop = sceneObject.stop;
+    }else if (thirdTile) {
+        NSLog(@"Tiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
+        if (!sceneObject.firstTile && !sceneObject.secondTile) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+            NSLog(@"Should Stop 6");
+            NSLog(@"stop? %i",sceneObject.stop);
+        }else if (sceneObject.secondTile && !stop) {
+            distanceY = sceneObject.distanceY;
+            translation.y += (distanceY * kSmoothingDistance);
+            
+        }
+        if (sceneObject.translation.y == 105.0) {
+            translation.y = 35.0;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+            NSLog(@"Should Stop 7");
+        }
+        if (sceneObject.translation.y == -105.0) {
+            translation.y = -35.0;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+            NSLog(@"Should Stop 8");
+        }
         
     }
-
 }
 
 - (void)didCollideWith:(SceneObject*)sceneObject 
@@ -447,93 +633,78 @@ static NSInteger tileVertexSize = 2;
         return;
     }
     
+    if (sceneObject.translation.x == translation.x) return;
     NSLog(@"collidedx");
-    
-    if (sceneObject.emptyPosition.y == emptyPosition.y) {
-        if (sceneObject.emptyPosition.x - sceneObject.translation.x > 0) {
-            if (translation.x < startPoint.x) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
-            }
-        }else{
-            if (translation.x > startPoint.x) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
-            }
+    //float distanceX = (outerTouchPoint.x + touchOffset.x) - translation.x;
+    if (firstTile) {
+        NSLog(@"firstTile");
+        stop = sceneObject.stop;
+        NSLog(@"Tiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
+        if (!sceneObject.secondTile && !sceneObject.thirdTile) {
+            sceneObject.secondTile = YES;
+            sceneObject.thirdTile = NO;
+            NSLog(@"Tiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
         }
-        translation.x +=  sceneObject.distanceX;
+        if (sceneObject.translation.x == 105.0) {
+            translation.x = 35.0;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+            NSLog(@"Should Stop 1");
+            NSLog(@"stop!? %i",sceneObject.stop);
+        }
+        if (sceneObject.translation.x == -105.0) {
+            translation.x = -35.0;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+            NSLog(@"Should Stop 2");
+            NSLog(@"stop!? %i",sceneObject.stop);
+            NSLog(@"stop!? %i",stop);
+        }
+    }else if(secondTile){
+        
+        NSLog(@"secondTile");
+        if (sceneObject.firstTile && !stop) {
+            distanceX = sceneObject.distanceX;
+            translation.x += (distanceX * kSmoothingDistance);
+            
+        }else if (!sceneObject.firstTile && !sceneObject.secondTile && !sceneObject.thirdTile) {
+            sceneObject.thirdTile = YES;
+        }
+        
+        if (sceneObject.translation.x == 105.0) {
+            translation.x = 35.0;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+            NSLog(@"Should Stop 4");
+            NSLog(@"stop!? %i",sceneObject.stop);
+        }
+        if (sceneObject.translation.x == -105.0) {
+            translation.x = -35.0;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+            NSLog(@"Should Stop 5");
+            NSLog(@"stop!? %i",sceneObject.stop);
+        }
+        self.stop = sceneObject.stop;
+    }else if (thirdTile) {
+        NSLog(@"Tiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
+        if (!sceneObject.firstTile && !sceneObject.secondTile) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+            NSLog(@"Should Stop 6");
+            NSLog(@"stop? %i",sceneObject.stop);
+        }else if (sceneObject.secondTile && !stop) {
+            distanceX = sceneObject.distanceX;
+            translation.x += distanceX * kSmoothingDistance;
+            
+        }
+        if (sceneObject.translation.x == 105.0) {
+            translation.x = 35.0;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+            NSLog(@"Should Stop 7");
+        }
+        if (sceneObject.translation.x == -105.0) {
+            translation.x = -35.0;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+            NSLog(@"Should Stop 8");
+        }
         
     }
-    
-    //float distanceX = (outerTouchPoint.x + touchOffset.x) - translation.x;
-//    if (firstTile) {
-//        NSLog(@"firstTile");
-//        stop = sceneObject.stop;
-//        NSLog(@"Tiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
-//        if (!sceneObject.secondTile && !sceneObject.thirdTile) {
-//            sceneObject.secondTile = YES;
-//            sceneObject.thirdTile = NO;
-//            NSLog(@"Tiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
-//        }
-//        if (sceneObject.translation.x == 105.0) {
-//            translation.x = 35.0;
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
-//            NSLog(@"Should Stop 1");
-//            NSLog(@"stop!? %i",sceneObject.stop);
-//        }
-//        if (sceneObject.translation.x == -105.0) {
-//            translation.x = -35.0;
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
-//            NSLog(@"Should Stop 2");
-//            NSLog(@"stop!? %i",sceneObject.stop);
-//            NSLog(@"stop!? %i",stop);
-//        }
-//    }else if(secondTile){
-//       
-//        NSLog(@"secondTile");
-//        if (sceneObject.firstTile && !stop) {
-//            distanceX = sceneObject.distanceX;
-//            translation.x += (distanceX * kSmoothingDistance);
-//            
-//        }else if (!sceneObject.firstTile && !sceneObject.secondTile && !sceneObject.thirdTile) {
-//                sceneObject.thirdTile = YES;
-//        }
-//        
-//        if (sceneObject.translation.x == 105.0) {
-//            translation.x = 35.0;
-//           [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
-//            NSLog(@"Should Stop 4");
-//            NSLog(@"stop!? %i",sceneObject.stop);
-//        }
-//        if (sceneObject.translation.x == -105.0) {
-//            translation.x = -35.0;
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
-//            NSLog(@"Should Stop 5");
-//            NSLog(@"stop!? %i",sceneObject.stop);
-//        }
-//        self.stop = sceneObject.stop;
-//    }else if (thirdTile) {
-//        NSLog(@"Tiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
-//        if (!sceneObject.firstTile && !sceneObject.secondTile) {
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
-//            NSLog(@"Should Stop 6");
-//            NSLog(@"stop? %i",sceneObject.stop);
-//        }else if (sceneObject.secondTile && !stop) {
-//            distanceX = sceneObject.distanceX;
-//            translation.x += distanceX * kSmoothingDistance;
-//        
-//        }
-//            if (sceneObject.translation.x == 105.0) {
-//                translation.x = 35.0;
-//                [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
-//                NSLog(@"Should Stop 7");
-//            }
-//            if (sceneObject.translation.x == -105.0) {
-//                translation.x = -35.0;
-//                [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
-//                NSLog(@"Should Stop 8");
-//            }
-//        
-//    }
-    
 }
 
 @end
