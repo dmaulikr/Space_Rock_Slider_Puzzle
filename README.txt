@@ -9,9 +9,9 @@ The base architecture of this project is a slightly modified template from Begin
 
 I am using it as a convenience because the opengl es 1.1 currently supported by the largest number of iOS devices and I have no need for shaders at the moment. If I decide to someday make this puzzle 3D, I will consider porting it to 2.0 and the newer iOS connivence framework. 
 
-The meat of this project is mostly in the messy Tile object where I work out all the collision logic and UI elements. 
+The meat of this project is mostly in the Tile object where I work out all the collision logic and UI elements. I am sharing this project under the MIT license.(2)
 
-If you have any comments for me please feel free to leave it and feel free to submit any enhancements you have made and wouldn't mind sharing. Happy Coding!
+If you have any comments for me please feel free to email me at info@norobostudios.com and feel free to submit any enhancements you have made and wouldn't mind sharing. Happy Coding!
 
 Thanks,
 Michael
