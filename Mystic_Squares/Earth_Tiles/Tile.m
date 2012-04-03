@@ -3,7 +3,7 @@
 //  Earth_Tiles
 //
 //  Created by Michael Golden on 2/7/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Norobo_Studios. All rights reserved.
 //
 
 #import "Tile.h"
@@ -460,9 +460,9 @@ static NSInteger tileVertexSize = 2;
         translation.y = 150.0;
     }
     
-//    NSArray *convArray = [[NSArray alloc] initWithObjects:[NSNumber numberWithFloat:translation.x], [NSNumber numberWithFloat:translation.y], nil];
-//    NSDictionary *positionDict = [NSDictionary dictionaryWithObject:convArray forKey:@"pass"];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"broadcastPosition" object:nil userInfo:positionDict];
+   // NSArray *convArray = [[NSArray alloc] initWithObjects:[NSNumber numberWithFloat:translation.x], [NSNumber numberWithFloat:translation.y], nil];
+   // NSDictionary *positionDict = [NSDictionary dictionaryWithObject:convArray forKey:@"pass"];
+   // [[NSNotificationCenter defaultCenter] postNotificationName:@"broadcastPosition" object:nil userInfo:positionDict];
     
     totalDistance.x = 0.0;
     totalDistance.y = 0.0;
@@ -549,19 +549,12 @@ static NSInteger tileVertexSize = 2;
     if (sqrtf((translation.y - startPoint.y) * (translation.y - startPoint.y)) > 70) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
     }
-    
-    if (!firstTile && !secondTile && !thirdTile) {
-        secondTile = YES;
-    }
-    if (firstTile) {
-        NSLog(@"firstTile");
+    if (firstTile){
         stop = sceneObject.stop;
-        NSLog(@"Tiles321? %i,%i,%i",thirdTile, secondTile, firstTile);
-        NSLog(@"Tiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
-        if (!sceneObject.secondTile && !sceneObject.thirdTile) {
+        if (!sceneObject.secondTile){
             sceneObject.secondTile = YES;
+            sceneObject.firstTile = NO;
             sceneObject.thirdTile = NO;
-            NSLog(@"Tiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
         }
         if (sceneObject.translation.y == 105.0) {
             translation.y = 35.0;
@@ -601,12 +594,13 @@ static NSInteger tileVertexSize = 2;
         }
         self.stop = sceneObject.stop;
     }else if (thirdTile) {
-        NSLog(@"Tiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
+        NSLog(@"3rdTiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
         if (!sceneObject.firstTile && !sceneObject.secondTile) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
             NSLog(@"Should Stop 6");
-            NSLog(@"stop? %i",sceneObject.stop);
-        }else if (sceneObject.secondTile && !stop) {
+            
+        }
+        if (sceneObject.secondTile && !stop) {
             distanceY = sceneObject.distanceY;
             translation.y += (distanceY * kSmoothingDistance);
             
@@ -687,7 +681,7 @@ static NSInteger tileVertexSize = 2;
         if (!sceneObject.firstTile && !sceneObject.secondTile) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
             NSLog(@"Should Stop 6");
-            NSLog(@"stop? %i",sceneObject.stop);
+            
         }else if (sceneObject.secondTile && !stop) {
             distanceX = sceneObject.distanceX;
             translation.x += distanceX * kSmoothingDistance;

@@ -128,7 +128,7 @@
 				4C5550C314E2012D00EC8E4B /* MGAppDelegate.m */,
 				4C5550EE14E2320E00EC8E4B /* Config */,
 				4C5550E714E22FFB00EC8E4B /* Simple Game Engine */,
-				4C5550EC14E230FE00EC8E4B /* Custom Objects */,
+				4C5550EC14E230FE00EC8E4B /* Tile Object */,
 				4C5550BA14E2012D00EC8E4B /* Supporting Files */,
 			);
 			path = Earth_Tiles;
@@ -164,13 +164,13 @@
 			name = "Simple Game Engine";
 			sourceTree = "<group>";
 		};
-		4C5550EC14E230FE00EC8E4B /* Custom Objects */ = {
+		4C5550EC14E230FE00EC8E4B /* Tile Object */ = {
 			isa = PBXGroup;
 			children = (
 				4C5550E914E230F500EC8E4B /* Tile.h */,
 				4C5550EA14E230F500EC8E4B /* Tile.m */,
 			);
-			name = "Custom Objects";
+			name = "Tile Object";
 			sourceTree = "<group>";
 		};
 		4C5550EE14E2320E00EC8E4B /* Config */ = {

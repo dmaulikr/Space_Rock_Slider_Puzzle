@@ -3,7 +3,7 @@
 //  Tetrabots
 //
 //  Created by Michael Golden on 10/4/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Norobo_Studios. All rights reserved.
 //
 
 #define RANDOM_SEED() srandom(time(NULL))

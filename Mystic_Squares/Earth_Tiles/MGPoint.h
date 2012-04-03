@@ -1,9 +1,8 @@
 //
 //  Point.h
-//  Tetrabots
 //
 //  Created by Michael Golden on 9/17/11.
-//  Copyright 2011 NoRoBoStudios. All rights reserved.
+//  Copyright 2011 Norobo_Studios. All rights reserved.
 //
 
 // A 3D point
