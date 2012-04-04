@@ -5,13 +5,11 @@ This project is a simple iOS implementation of the slider puzzle otherwise known
 
 I am building this project for a programming challenge suggested by a third party, but am interested in the mathematics of this game as well and it's relationship to the NP-hard problem in complexity theory. 
 
-The base architecture of this project is a slightly modified template from Beginning iPhone Game Development, chapters 6-8, by Ben Britton Smith.  
+The base architecture of this project is a modified template from Beginning iPhone Game Development, chapters 6-8, by Ben Britton Smith. I bought his book and enjoyed his tutorials and talks. 
 
-I am using it as a convenience because the opengl es 1.1 currently supported by the largest number of iOS devices and I have no need for shaders at the moment. If I decide to someday make this puzzle 3D, I will consider porting it to 2.0 and the newer iOS connivence framework. 
+I am using this foundation as a convenience because the quickest way to get maximum performance and device range is to use opengl es 1.1. The meat of this project is mostly in the Tile object where I work out all the collision logic and UI elements. I am sharing this project under the MIT license.(2)
 
-The meat of this project is mostly in the Tile object where I work out all the collision logic and UI elements. I am sharing this project under the MIT license.(2)
-
-If you have any comments for me please feel free to email me at info@norobostudios.com and feel free to submit any enhancements you have made and wouldn't mind sharing. Happy Coding!
+If you have any comments or suggestions, please feel free to contact me at this @ contact.us@norobostudios.com.
 
 Thanks,
 Michael
