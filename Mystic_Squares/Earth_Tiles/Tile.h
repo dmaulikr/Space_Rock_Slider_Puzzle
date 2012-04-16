@@ -72,24 +72,20 @@
 @property(assign) CGPoint pF;
 @property(assign) CGPoint totalDistance;
 
-+(Tile*)makeTileNumber:(NSInteger)count;
++ (Tile*)makeTileNumber:(NSInteger)count;
 
--(void)handleTouches;
+- (void)handleTouches;
 
--(void)moveTile:(CGPoint)touchPoint;
+- (void)moveTile:(CGPoint)touchPoint;
 
--(void)stopMove;
+- (void)stopMove;
 
--(void)moveBegan;
+- (void)moveBegan;
 
--(void)autoMove;
+- (void)autoMove;
 
--(void)emptySpacePermutation:(CGPoint)emptySpace;
+- (void)moveXorY;
 
--(void)getEmptyPosition:(NSNotification*)notification;
-
--(void)moveXorY;
-
--(void)moveEnded;
+- (void)moveEnded;
 
 @end

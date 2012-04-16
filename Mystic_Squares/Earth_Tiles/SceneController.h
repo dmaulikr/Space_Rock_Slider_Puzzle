@@ -57,4 +57,6 @@
 - (void)generateTiles;
 - (void)addObjectToScene:(SceneObject*)sceneObject;
 - (void)removeObjectFromScene:(SceneObject*)sceneObject;
+- (CGPoint)findTheEmptySpace:(CGPoint)startingTile default:(CGPoint)lastEmptySpace;
+
 @end

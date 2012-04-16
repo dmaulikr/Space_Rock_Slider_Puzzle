@@ -17,6 +17,8 @@
 #import "MGConfiguration.h"
 #import "Tile.h"
 
+
+
 @implementation SceneController
 
 @synthesize inputController, openGLView;
@@ -63,7 +65,7 @@
         
 }
 
-// we dont actualy add the object directly to the scene.
+// we dont add the object directly to the scene.
 // this can get called anytime during the game loop, so we want to
 // queue up any objects that need adding and add them at the start of
 // the next game loop. useful for arcade style games. 
@@ -76,7 +78,7 @@
 	[objectsToAdd addObject:sceneObject];
 }
 
-// similar to adding objects, we cannot just remove objects from
+// we cannot just remove objects from
 // the scene at any time.  we want to queue them for removal 
 // and purge them at the end of the game loop
 -(void)removeObjectFromScene:(SceneObject*)sceneObject
@@ -100,7 +102,6 @@
 
 - (void)gameLoop
 {
-	// we use our own autorelease pool so that we can control when garbage gets collected
 	NSAutoreleasePool * apool = [[NSAutoreleasePool alloc] init];
     
 	// collect game metrics for time and performance.
@@ -175,6 +176,61 @@
 		[self startAnimation];
 	}
 }
+
+#pragma mark Find Empty Position
+
+- (CGPoint)findTheEmptySpace:(CGPoint)startingTile default:(CGPoint)lastEmptySpace{
+    
+    
+    CGPoint lastPoint;
+    Tile *tile;
+    for (int i = 0; i < 6; i++) {
+        BOOL spaceFull = NO;
+        
+        if (i == 0) {
+            lastPoint = lastEmptySpace;
+        }
+        
+        if (i == 1 && startingTile.y != 105.0) {
+            lastPoint = CGPointMake(startingTile.x, startingTile.y + 70);
+        }
+        if (i == 2 && startingTile.x != 105.0) {
+            lastPoint = CGPointMake(startingTile.x + 70.0, startingTile.y);
+        }
+        if (i == 3 && startingTile.y != -105.0) {
+            lastPoint = CGPointMake(startingTile.x, startingTile.y - 70);
+            
+        }
+        if (i == 4 && startingTile.x != -105) {
+            lastPoint = CGPointMake(startingTile.x - 70, startingTile.y);
+            
+        }
+        if (i == 5){
+            lastPoint = startingTile;
+        }
+        
+        
+        for (tile in sceneObjects) {
+            
+            if (tile.startPoint.x == lastPoint.x && tile.startPoint.y == lastPoint.y) {
+                spaceFull = YES;
+            }
+            NSLog(@"lastempty: %f, %f", lastPoint.x, lastPoint.y);
+            NSLog(@"lastempty: %f, %f", tile.startPoint.x, tile.startPoint.y);
+        }
+        
+        if (!spaceFull) {
+            
+            NSLog(@"spacefull Fired");
+            return lastPoint;
+            
+        }
+      
+    }
+    //should never reach this
+    return lastEmptySpace;
+}
+
 
 #pragma mark dealloc
 
