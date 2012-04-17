@@ -33,7 +33,8 @@
 	
 	NSTimeInterval lastFrameStartTime;
 	NSTimeInterval thisFrameStartTime;
-    
+    CGPoint lastPoint;
+
 }
 
 @property (retain) InputVC * inputController;
@@ -57,6 +58,6 @@
 - (void)generateTiles;
 - (void)addObjectToScene:(SceneObject*)sceneObject;
 - (void)removeObjectFromScene:(SceneObject*)sceneObject;
-- (CGPoint)findTheEmptySpace:(CGPoint)startingTile default:(CGPoint)lastEmptySpace;
+- (CGPoint)findTheEmptySpaceWithStarter:(CGPoint)startingTile andLastSpace:(CGPoint)lastEmptySpace;
 
 @end

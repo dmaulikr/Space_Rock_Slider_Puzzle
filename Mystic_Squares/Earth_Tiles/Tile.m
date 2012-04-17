@@ -61,7 +61,7 @@ static GLfloat positionMatrix[32] = {
 static NSInteger tileVertexSize = 2;
 
 @implementation Tile
-@synthesize startPoint, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, pA, pB, pC, pD, pE, pF, totalDistance;
+@synthesize startPoint, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, pA, pB, pC, pD, pE, pF, endPoint, totalDistance;
 
 #pragma Mark -
 #pragma Mark Initization Methods
@@ -221,11 +221,6 @@ static NSInteger tileVertexSize = 2;
     for (UITouch * startTouch in [beganTouches allObjects]) {
 		CGPoint touchPointB = [startTouch locationInView:[startTouch view]];
 		if (CGRectContainsPoint(screenRect, touchPointB)) {
-
-            //get the new empty space.
-            NSLog(@"Before %.1f, %.1f", emptyPosition.x, emptyPosition.y);
-            emptyPosition = [[SceneController sharedSceneController] findTheEmptySpace:startPoint default:emptyPosition];
-            NSLog(@"After %.1f, %.1f", emptyPosition.x, emptyPosition.y);
             
             firstTile = YES; 
             pointInBounds = YES;
@@ -277,6 +272,11 @@ static NSInteger tileVertexSize = 2;
                 }
                 //NSLog(@"x was bigger: %i", xWasBigger);
                 [self moveTile:point];
+            }else {
+                //get the new empty space.
+                NSLog(@"Before %.1f, %.1f", emptyPosition.x, emptyPosition.y);
+                emptyPosition = [[SceneController sharedSceneController] findTheEmptySpaceWithStarter:startPoint andLastSpace:emptyPosition];
+                NSLog(@"After %.1f, %.1f", emptyPosition.x, emptyPosition.y);
             }
         }
     }
@@ -303,6 +303,13 @@ static NSInteger tileVertexSize = 2;
 }
 
 -(void)moveEnded{
+    
+    if (firstTile) {
+        //get the new empty space.
+        NSLog(@"Before %.1f, %.1f", emptyPosition.x, emptyPosition.y);
+        emptyPosition = [[SceneController sharedSceneController] findTheEmptySpaceWithStarter:startPoint andLastSpace:emptyPosition];
+        NSLog(@"After %.1f, %.1f", emptyPosition.x, emptyPosition.y);
+    }
     
     firstTile = NO;
     secondTile = NO;
@@ -344,7 +351,7 @@ static NSInteger tileVertexSize = 2;
     totalDistance.x = 0.0;
     totalDistance.y = 0.0;
     
-    
+    endPoint = CGPointMake(translation.x, translation.y);
 }
 
 

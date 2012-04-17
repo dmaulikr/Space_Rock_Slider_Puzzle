@@ -177,56 +177,61 @@
 	}
 }
 
-#pragma mark Find Empty Position
-
-- (CGPoint)findTheEmptySpace:(CGPoint)startingTile default:(CGPoint)lastEmptySpace{
+- (CGPoint)findTheEmptySpaceWithStarter:(CGPoint)startingTile andLastSpace:(CGPoint)lastEmptySpace{
     
-    
-    CGPoint lastPoint;
     Tile *tile;
-    for (int i = 0; i < 6; i++) {
-        BOOL spaceFull = NO;
+    BOOL spaceFilled;
+    
+    for (int i = 0; i < 4; i++) {
+      spaceFilled = NO;      
+        //switch to most likely open space using
+        //the touched tile and last empty position.
         
-        if (i == 0) {
-            lastPoint = lastEmptySpace;
-        }
-        
-        if (i == 1 && startingTile.y != 105.0) {
-            lastPoint = CGPointMake(startingTile.x, startingTile.y + 70);
-        }
-        if (i == 2 && startingTile.x != 105.0) {
-            lastPoint = CGPointMake(startingTile.x + 70.0, startingTile.y);
-        }
-        if (i == 3 && startingTile.y != -105.0) {
-            lastPoint = CGPointMake(startingTile.x, startingTile.y - 70);
+        NSLog(@"startPosition: %f, %f", startingTile.x, startingTile.y);
+        NSLog(@"lastEmptyPosition: %f, %f", lastEmptySpace.x, lastEmptySpace.y);
+        if (startingTile.x == lastEmptySpace.x){
+            //Then it must be in the same column.
+            //Damn this got twisted somehow...
             
-        }
-        if (i == 4 && startingTile.x != -105) {
-            lastPoint = CGPointMake(startingTile.x - 70, startingTile.y);
+            lastPoint.x = lastEmptySpace.x;
+            float floater = 105 - 70 * i;
+            //check all the spaces in this column.
+            lastPoint.y = floater;
             
-        }
-        if (i == 5){
-            lastPoint = startingTile;
+        }else{
+            //It must be in the same row.
+            lastPoint.y = lastEmptySpace.y;
+            
+            //check all the spaces in this row.
+            float floater = 105 - 70 * i;
+            lastPoint.x = floater;
         }
         
+        //Check each tile to see if one occupies the guessed space.
+        //This is slow. I wonder if it could be done faster...
         
+        //!!THE PROBLEM IS HERE.
         for (tile in sceneObjects) {
-            
-            if (tile.startPoint.x == lastPoint.x && tile.startPoint.y == lastPoint.y) {
-                spaceFull = YES;
+            NSLog(@"emptyGuess: %f, %f", lastPoint.x, lastPoint.y);
+            NSLog(@"checkTile: %f, %f", tile.endPoint.x, tile.endPoint.y);
+            if (CGRectContainsPoint((CGRectMake(tile.endPoint.x, tile.endPoint.y, 10, 10)), lastPoint)) {
+                spaceFilled = YES;
+                NSLog(@"their equal");
+                
+
             }
-            NSLog(@"lastempty: %f, %f", lastPoint.x, lastPoint.y);
-            NSLog(@"lastempty: %f, %f", tile.startPoint.x, tile.startPoint.y);
+            
         }
         
-        if (!spaceFull) {
-            
-            NSLog(@"spacefull Fired");
-            return lastPoint;
-            
-        }
-      
     }
+    
+    if (!spaceFilled) {
+        
+        return lastPoint;
+        
+    }
+    
+    
     //should never reach this
     return lastEmptySpace;
 }

@@ -23,6 +23,8 @@
     
     CGPoint startPoint;
     
+    CGPoint endPoint;
+    
     NSInteger moveCount;
     NSInteger tilesChecked;
     
@@ -71,6 +73,7 @@
 @property(assign) CGPoint pE;
 @property(assign) CGPoint pF;
 @property(assign) CGPoint totalDistance;
+@property(assign) CGPoint endPoint;
 
 + (Tile*)makeTileNumber:(NSInteger)count;
 
