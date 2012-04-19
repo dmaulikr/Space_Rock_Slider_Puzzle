@@ -25,8 +25,10 @@
 // initial position string
 //#define kInitialPositions @"0123456789ABCDEF"
 #define kInitialPositions @"FE1B9065D2CA7834"
+
+
 // allowable tile disance per move
 #define kSmoothingDistance 1
-#define kCutoffDistance 20.0
-#define kMaxFingerSpeed 10.0
+#define kCutoffDistance 100.0
+#define kMaxFingerSpeed 30.0
 #define kAutoMoveDistance 3.0

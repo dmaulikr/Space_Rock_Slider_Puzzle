@@ -64,7 +64,7 @@
     colliderRect = sceneObject.meshBounds;
     colliderRect.origin = CGPointMake(transformedCenter.x, transformedCenter.y);
     scale = MGPointMake(sceneObject.scale.x, sceneObject.scale.y,1.0);
-    colliderRect.size = CGSizeMake((sceneObject.scale.x + 3.0), (sceneObject.scale.y + 3.0));
+    colliderRect.size = CGSizeMake((sceneObject.scale.x + 2.5), (sceneObject.scale.y + 2.5));
     
 }
 

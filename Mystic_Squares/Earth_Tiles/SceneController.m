@@ -180,8 +180,7 @@
 - (CGPoint)findTheEmptySpaceWithStarter:(CGPoint)startingTile andLastSpace:(CGPoint)lastEmptySpace{
     
     Tile *tile;
-    BOOL spaceFilled = NO;
-    
+    BOOL spaceFilled;
     for (int i = 0; i < 4; i++) {
         //switch to most likely open space using
         //the touched tile and last empty position.
@@ -198,6 +197,24 @@
             float floater = -105.0 + (70.0 * i);
             lastPoint.y = floater;
             
+            for (tile in sceneObjects) {
+                //NSLog(@"emptyGuess: %f, %f", lastPoint.x, lastPoint.y);
+                //NSLog(@"checkTile: %f, %f \n\n..", tile.fTilePosition.x, tile.fTilePosition.y);
+                
+                if (tile.fTilePosition.x == lastPoint.x) {
+                    if (CGPointEqualToPoint(lastPoint, tile.fTilePosition)) {
+                        spaceFilled = YES;
+                        NSLog(@"They're Equal\n\n..");
+                        break;
+                        
+                    }
+                }
+            }
+            if (!spaceFilled) {
+                
+                return lastPoint;
+            }
+            
         }else{
             //It must be in the same row.
             lastPoint.y = lastEmptySpace.y;
@@ -205,32 +222,29 @@
             //check all the spaces in this row.
             float floater = -105.0 + (70.0 * i);
             lastPoint.x = floater;
-        }
-        
-        //Check each tile to see if one occupies the guessed space.
-        //This is slow. I wonder if it could be done faster...
-        
-        //!!THE PROBLEM IS HERE.
-        for (tile in sceneObjects) {
-            NSLog(@"emptyGuess: %f, %f", lastPoint.x, lastPoint.y);
-            NSLog(@"checkTile: %f, %f \n\n..", tile.fTilePosition.x, tile.fTilePosition.y);
-            if (CGPointEqualToPoint(lastPoint, tile.fTilePosition)) {
-                spaceFilled = YES;
-                NSLog(@"They're Equal\n\n..");
-                break;
-
+            
+            for (tile in sceneObjects) {
+                //NSLog(@"emptyGuess: %f, %f", lastPoint.x, lastPoint.y);
+                //NSLog(@"checkTile: %f, %f \n\n..", tile.fTilePosition.x, tile.fTilePosition.y);
+                
+                if (tile.fTilePosition.y == lastPoint.y) {
+                    if (CGPointEqualToPoint(lastPoint, tile.fTilePosition)) {
+                        spaceFilled = YES;
+                        NSLog(@"They're Equal\n\n..");
+                        break;
+                        
+                    }
+                }
             }
-        }
-        
-        if (!spaceFilled) {
-            
-            return lastPoint;
-            
+            if (!spaceFilled) {
+                
+                return lastPoint;
+            }
         }
     }
     
-    //should never reach this
-    return lastEmptySpace;
+    //should not hit this point
+    return lastPoint;
 }
 
 -(CGPoint)sychronizeLastPoint{
