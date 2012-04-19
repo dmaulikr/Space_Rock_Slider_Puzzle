@@ -180,22 +180,22 @@
 - (CGPoint)findTheEmptySpaceWithStarter:(CGPoint)startingTile andLastSpace:(CGPoint)lastEmptySpace{
     
     Tile *tile;
-    BOOL spaceFilled;
+    BOOL spaceFilled = NO;
     
     for (int i = 0; i < 4; i++) {
-      spaceFilled = NO;      
         //switch to most likely open space using
         //the touched tile and last empty position.
         
         NSLog(@"startPosition: %f, %f", startingTile.x, startingTile.y);
         NSLog(@"lastEmptyPosition: %f, %f", lastEmptySpace.x, lastEmptySpace.y);
+        spaceFilled = NO;
         if (startingTile.x == lastEmptySpace.x){
             //Then it must be in the same column.
             //Damn this got twisted somehow...
             
             lastPoint.x = lastEmptySpace.x;
-            float floater = 105 - 70 * i;
             //check all the spaces in this column.
+            float floater = -105.0 + (70.0 * i);
             lastPoint.y = floater;
             
         }else{
@@ -203,7 +203,7 @@
             lastPoint.y = lastEmptySpace.y;
             
             //check all the spaces in this row.
-            float floater = 105 - 70 * i;
+            float floater = -105.0 + (70.0 * i);
             lastPoint.x = floater;
         }
         
@@ -213,27 +213,30 @@
         //!!THE PROBLEM IS HERE.
         for (tile in sceneObjects) {
             NSLog(@"emptyGuess: %f, %f", lastPoint.x, lastPoint.y);
-            NSLog(@"checkTile: %f, %f", tile.endPoint.x, tile.endPoint.y);
-            if (CGRectContainsPoint((CGRectMake(tile.endPoint.x, tile.endPoint.y, 10, 10)), lastPoint)) {
+            NSLog(@"checkTile: %f, %f \n\n..", tile.fTilePosition.x, tile.fTilePosition.y);
+            if (CGPointEqualToPoint(lastPoint, tile.fTilePosition)) {
                 spaceFilled = YES;
-                NSLog(@"their equal");
-                
+                NSLog(@"They're Equal\n\n..");
+                break;
 
             }
-            
         }
         
+        if (!spaceFilled) {
+            
+            return lastPoint;
+            
+        }
     }
-    
-    if (!spaceFilled) {
-        
-        return lastPoint;
-        
-    }
-    
     
     //should never reach this
     return lastEmptySpace;
+}
+
+-(CGPoint)sychronizeLastPoint{
+    
+    return lastPoint;
+    
 }
 
 

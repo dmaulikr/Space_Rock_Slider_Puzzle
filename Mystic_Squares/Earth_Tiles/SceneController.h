@@ -59,5 +59,6 @@
 - (void)addObjectToScene:(SceneObject*)sceneObject;
 - (void)removeObjectFromScene:(SceneObject*)sceneObject;
 - (CGPoint)findTheEmptySpaceWithStarter:(CGPoint)startingTile andLastSpace:(CGPoint)lastEmptySpace;
+- (CGPoint)sychronizeLastPoint;
 
 @end

@@ -61,7 +61,7 @@ static GLfloat positionMatrix[32] = {
 static NSInteger tileVertexSize = 2;
 
 @implementation Tile
-@synthesize startPoint, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, pA, pB, pC, pD, pE, pF, endPoint, totalDistance;
+@synthesize startPoint, iTilePosition, p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, pA, pB, pC, pD, pE, pF, fTilePosition, totalDistance;
 
 #pragma Mark -
 #pragma Mark Initization Methods
@@ -228,6 +228,11 @@ static NSInteger tileVertexSize = 2;
             
             startPoint = CGPointMake((touchPointB.x - 160), -(touchPointB.y - 240));
             
+            iTilePosition.x = [self centerTheTile:translation].x ;
+            iTilePosition.y = [self centerTheTile:translation].y ;
+            
+            NSLog(@"iTile %.1f, %.1f", iTilePosition.x, iTilePosition.y);
+            
             touchOffset.x = translation.x - startPoint.x;
             touchOffset.y = translation.y - startPoint.y;
     
@@ -272,11 +277,6 @@ static NSInteger tileVertexSize = 2;
                 }
                 //NSLog(@"x was bigger: %i", xWasBigger);
                 [self moveTile:point];
-            }else {
-                //get the new empty space.
-                NSLog(@"Before %.1f, %.1f", emptyPosition.x, emptyPosition.y);
-                emptyPosition = [[SceneController sharedSceneController] findTheEmptySpaceWithStarter:startPoint andLastSpace:emptyPosition];
-                NSLog(@"After %.1f, %.1f", emptyPosition.x, emptyPosition.y);
             }
         }
     }
@@ -287,10 +287,12 @@ static NSInteger tileVertexSize = 2;
 
 
 -(void)moveBegan{
-
+    
     startPoint.x = translation.x;
     startPoint.y = translation.y;
-
+    
+    //translation = [self centerTheTile:translation];
+    fTilePosition = CGPointMake([self centerTheTile:translation].x, [self centerTheTile:translation].y);
 }
 
 -(void)stopMove{
@@ -304,12 +306,23 @@ static NSInteger tileVertexSize = 2;
 
 -(void)moveEnded{
     
+    translation = [self centerTheTile:translation]; 
+    
+    fTilePosition = CGPointMake(translation.x, translation.y);
+    
+   
+    
     if (firstTile) {
         //get the new empty space.
-        NSLog(@"Before %.1f, %.1f", emptyPosition.x, emptyPosition.y);
-        emptyPosition = [[SceneController sharedSceneController] findTheEmptySpaceWithStarter:startPoint andLastSpace:emptyPosition];
-        NSLog(@"After %.1f, %.1f", emptyPosition.x, emptyPosition.y);
+        [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(timedEmptySpaceLaunch) userInfo:nil repeats:NO];
+        //[emptyLaunchTime fire];
+    }else {
+        [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(synchronizeEmptySpace) userInfo:nil repeats:NO];
+        //[emptyLaunchTime fire];
     }
+    
+    
+    //initialize move data.
     
     firstTile = NO;
     secondTile = NO;
@@ -320,40 +333,58 @@ static NSInteger tileVertexSize = 2;
     xWasBigger = NO;
     moveCount = 0;
     tilesChecked = 0;
-    
-    // If not fully moved jump to nearest x position.
-    if (translation.x < -60.0) {
-        translation.x = -105.0;
-    }
-    if (translation.x >= -80 && translation.x < -10.0) {
-        translation.x = -35.0;
-    }
-    if (translation.x >= 0.0 && translation.x < 70) {
-        translation.x = 35.0;
-    }
-    if (translation.x >= 70.0) {
-        translation.x = 150.0;
-    }
-    // Do the same for y
-    if (translation.y < -70.0) {
-        translation.y = -105.0;
-    }
-    if (translation.y >= -70 && translation.y < 0.0) {
-        translation.y = -35.0;
-    }
-    if (translation.y >= 0.0 && translation.y < 70) {
-        translation.y = 35.0;
-    }
-    if (translation.y >= 70.0) {
-        translation.y = 150.0;
-    }
-    
     totalDistance.x = 0.0;
     totalDistance.y = 0.0;
-    
-    endPoint = CGPointMake(translation.x, translation.y);
+
 }
 
+- (MGPoint)centerTheTile:(MGPoint)position{
+    CGPoint tempPoint;
+    // If not fully moved jump to nearest x position.
+    if (position.x < -70.0) {
+        tempPoint.x = -105.0;
+    }
+    if (position.x >= -70 && position.x < 0.0) {
+        tempPoint.x = -35.0;
+    }
+    if (position.x >= 0.0 && position.x < 70) {
+        tempPoint.x = 35.0;
+    }
+    if (position.x >= 70.0) {
+        tempPoint.x = 150.0;
+    }
+    // Do the same for y
+    if (position.y < -70.0) {
+        tempPoint.y = -105.0;
+    }
+    if (position.y >= -70 && position.y < 0.0) {
+        tempPoint.y = -35.0;
+    }
+    if (position.y >= 0.0 && position.y < 70) {
+        tempPoint.y = 35.0;
+    }
+    if (position.y >= 70.0) {
+        tempPoint.y = 150.0;
+    }
+    
+    MGPoint retPoint = MGPointMake(tempPoint.x, tempPoint.y, 0.0);
+    
+    return retPoint;
+}
+
+- (void)timedEmptySpaceLaunch{
+ 
+    NSLog(@"Before %.1f, %.1f", emptyPosition.x, emptyPosition.y);
+    emptyPosition = [[SceneController sharedSceneController] findTheEmptySpaceWithStarter:iTilePosition andLastSpace:emptyPosition];
+    NSLog(@"After %.1f, %.1f", emptyPosition.x, emptyPosition.y);
+    
+}
+
+- (void)synchronizeEmptySpace{
+    
+    emptyPosition = [[SceneController sharedSceneController] sychronizeLastPoint];
+    NSLog(@"After2 %.1f, %.1f", emptyPosition.x, emptyPosition.y);
+}
 
 
 -(void)moveTile:(CGPoint)touchPoint{

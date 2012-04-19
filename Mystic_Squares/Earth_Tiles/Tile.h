@@ -22,8 +22,8 @@
     CGRect screenRect;
     
     CGPoint startPoint;
-    
-    CGPoint endPoint;
+    CGPoint iTilePosition;
+    CGPoint fTilePosition;
     
     NSInteger moveCount;
     NSInteger tilesChecked;
@@ -55,7 +55,7 @@
 }
 
 @property(assign) CGPoint startPoint;
-
+@property(assign) CGPoint iTilePosition;
 @property(assign) CGPoint p0;
 @property(assign) CGPoint p1;
 @property(assign) CGPoint p2;
@@ -73,13 +73,19 @@
 @property(assign) CGPoint pE;
 @property(assign) CGPoint pF;
 @property(assign) CGPoint totalDistance;
-@property(assign) CGPoint endPoint;
+@property(assign) CGPoint fTilePosition;
 
 + (Tile*)makeTileNumber:(NSInteger)count;
 
 - (void)handleTouches;
 
 - (void)moveTile:(CGPoint)touchPoint;
+
+- (MGPoint)centerTheTile:(MGPoint)position;
+
+- (void)timedEmptySpaceLaunch;
+
+- (void)synchronizeEmptySpace;
 
 - (void)stopMove;
 
