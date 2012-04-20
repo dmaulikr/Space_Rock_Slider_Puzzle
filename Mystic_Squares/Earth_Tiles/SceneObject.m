@@ -18,9 +18,9 @@
 
 
 @implementation SceneObject
-@synthesize translation, rotation, scale, active, mesh, matrix; 
+@synthesize translation, rotation, scale, active, mesh, matrix, witchMove; 
 @synthesize meshBounds, collider, counter, outerTouchPoint, touchOffset, emptyPosition;
-@synthesize firstTile, secondTile, thirdTile, singleTap, stop, distanceX, distanceY;
+@synthesize firstTile, secondTile, thirdTile, singleTap, autoMoveSwitch, stop, distanceX, distanceY;
 
 - (id) init
 {

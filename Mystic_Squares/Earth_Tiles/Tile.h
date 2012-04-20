@@ -10,6 +10,12 @@
 //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#define kMoveUp @"up"
+#define kMoveDown @"down"
+#define kMoveLeft @"left"
+#define kMoveRight @"right"
+#define kNoMove @"none"
+
 #import <Foundation/Foundation.h>
 #import "MGMobileObject.h"
 
@@ -18,6 +24,8 @@
     CGFloat *verts;
     
     CGFloat *colors;
+    
+    
     
     CGRect screenRect;
     
@@ -29,9 +37,6 @@
     NSInteger tilesChecked;
     
     BOOL pointInBounds;
-    BOOL xWasBigger;
-    BOOL autoMoveSwitch;
-    
     
     CGPoint p0;
     CGPoint p1;
@@ -75,6 +80,7 @@
 @property(assign) CGPoint totalDistance;
 @property(assign) CGPoint fTilePosition;
 
+
 + (Tile*)makeTileNumber:(NSInteger)count;
 
 - (void)handleTouches;
@@ -93,7 +99,15 @@
 
 - (void)autoMove;
 
-- (void)moveXorY;
+- (void)autoMoveDelay;
+
+- (void)allowUpMove;
+
+- (void)allowDownMove;
+
+- (void)allowLeftMove;
+
+- (void)allowRightMove;
 
 - (void)moveEnded;
 

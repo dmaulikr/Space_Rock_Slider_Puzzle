@@ -98,6 +98,9 @@ static NSInteger tileVertexSize = 2;
     a = (count + (count -1));
     b = 2 * count;
     
+    tile.firstTile = NO;
+    tile.secondTile = NO;
+    tile.thirdTile = NO;
     //NSLog(@"MatrixNumber:%i, %i", a, b);
     
     tile.p0 = CGPointMake(positionMatrix[0], positionMatrix[1]);
@@ -159,7 +162,10 @@ static NSInteger tileVertexSize = 2;
 -(void)awake{
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveBegan) name:@"start" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveXorY) name:@"whichWay" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(allowUpMove) name:@"up" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(allowDownMove) name:@"down" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(allowLeftMove) name:@"left" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(allowRightMove) name:@"right" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopMove) name:@"stop" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveEnded) name:@"end" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getEmptyPosition:) name:@"broadcastPosition" object:nil];
@@ -235,7 +241,33 @@ static NSInteger tileVertexSize = 2;
             
             touchOffset.x = translation.x - startPoint.x;
             touchOffset.y = translation.y - startPoint.y;
-    
+            
+            
+            if (emptyPosition.y == iTilePosition.y && emptyPosition.x < iTilePosition.x) {
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"left" object:nil];
+                witchMove = kMoveLeft;
+                
+                
+            }else if (emptyPosition.y == iTilePosition.y && emptyPosition.x > iTilePosition.x) {
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"right" object:nil];
+                witchMove = kMoveRight;
+                
+                
+            }else if (emptyPosition.x == iTilePosition.x  && emptyPosition.y < iTilePosition.y){
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"down" object:nil];
+                witchMove = kMoveDown;
+                
+            }else if (emptyPosition.x == iTilePosition.x && emptyPosition.y > iTilePosition.y){
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"up" object:nil];
+                witchMove = kMoveUp;
+                
+            }else{
+                witchMove = kNoMove;
+            }
         }
         
     }
@@ -260,30 +292,37 @@ static NSInteger tileVertexSize = 2;
              //NSLog(@"stop1: %i %i",self.stop, stop);
             if (!stop) {
                 
-                //(sqrtf((translation.x - startPoint.x) * (translation.x - startPoint.x)) < 75 || sqrtf((translation.y - startPoint.y) * (translation.y - startPoint.y)) < 75) && 
+                if (emptyPosition.y == iTilePosition.y && emptyPosition.x < iTilePosition.x) {
                 
-                
-                
-                //NSLog(@"%f, %f %f", firstDisance.x, firstDisance.y, (sqrtf(firstDisance.x * firstDisance.x) - sqrtf(firstDisance.y * firstDisance.y)));
-                
-                if (emptyPosition.y == iTilePosition.y) {
-                
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"whichWay" object:nil];
-                    //xWasBigger = YES;
-                        
-                }else{
-                
-                    xWasBigger = NO;
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"left" object:nil];
+                    witchMove = kMoveLeft;
                     
+                        
+                }else if (emptyPosition.y == iTilePosition.y && emptyPosition.x > iTilePosition.x) {
+                    
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"right" object:nil];
+                    witchMove = kMoveRight;
+                    
+                    
+                }else if (emptyPosition.x == iTilePosition.x  && emptyPosition.y < iTilePosition.y){
+                
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"down" object:nil];
+                    witchMove = kMoveDown;
+                    
+                }else if (emptyPosition.x == iTilePosition.x && emptyPosition.y > iTilePosition.y){
+                    
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"up" object:nil];
+                    witchMove = kMoveUp;
+                    
+                }else{
+                    return;
                 }
-            
-                //NSLog(@"x was bigger: %i", xWasBigger);
+        
                 [self moveTile:point];
                 moveCount +=1;
             }
         }
     }
-    //emptyPosition = [[SceneController sharedSceneController] findTheEmptySpace:startPoint default:emptyPosition];
 }
 #pragma Mark -
 #pragma Mark Notification Methods
@@ -304,11 +343,37 @@ static NSInteger tileVertexSize = 2;
     stop = YES;
 }
 
--(void)moveXorY{
-    xWasBigger = YES;
+-(void)allowUpMove{
+    witchMove = kMoveUp;
 }
 
+-(void)allowDownMove{
+    
+    witchMove = kMoveDown;
+    
+}
+
+-(void)allowLeftMove{
+    
+    witchMove = kMoveLeft;
+    
+}
+
+-(void)allowRightMove{
+    
+    witchMove = kMoveRight;
+    
+}
+
+
 -(void)moveEnded{
+    
+    if (singleTap) {
+        
+        [self timedEmptySpaceLaunch];
+        [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(autoMoveDelay) userInfo:nil repeats:NO];
+        return;
+    }
     
     translation = [self centerTheTile:translation]; 
     
@@ -318,10 +383,10 @@ static NSInteger tileVertexSize = 2;
     
     if (firstTile) {
         //get the new empty space.
-        [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(timedEmptySpaceLaunch) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:0.0 target:self selector:@selector(timedEmptySpaceLaunch) userInfo:nil repeats:NO];
         //[emptyLaunchTime fire];
     }else {
-        [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(synchronizeEmptySpace) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(synchronizeEmptySpace) userInfo:nil repeats:NO];
         //[emptyLaunchTime fire];
     }
     
@@ -334,7 +399,6 @@ static NSInteger tileVertexSize = 2;
     stop = NO;
     pointInBounds = NO;
     singleTap = NO;
-    xWasBigger = NO;
     moveCount = 0;
     tilesChecked = 0;
     totalDistance.x = 0.0;
@@ -351,7 +415,7 @@ static NSInteger tileVertexSize = 2;
     if (position.x >= -70 && position.x < 0.0) {
         tempPoint.x = -35.0;
     }
-    if (position.x >= 0.0 && position.x < 70) {
+    if (position.x >= 0.0 && position.x < 70.0) {
         tempPoint.x = 35.0;
     }
     if (position.x >= 70.0) {
@@ -361,10 +425,10 @@ static NSInteger tileVertexSize = 2;
     if (position.y < -70.0) {
         tempPoint.y = -105.0;
     }
-    if (position.y >= -70 && position.y < 0.0) {
+    if (position.y >= -70.0 && position.y < 0.0) {
         tempPoint.y = -35.0;
     }
-    if (position.y >= 0.0 && position.y < 70) {
+    if (position.y >= 0.0 && position.y < 70.0) {
         tempPoint.y = 35.0;
     }
     if (position.y >= 70.0) {
@@ -392,26 +456,66 @@ static NSInteger tileVertexSize = 2;
 
 
 -(void)moveTile:(CGPoint)touchPoint{
-   
-    if (xWasBigger){
+    if (!firstTile) return;
+    
+    if ([witchMove isEqualToString:kMoveRight]){
+        
         if (sqrtf((translation.x - startPoint.x) * (translation.x - startPoint.x)) > 80) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
         }
+
         distanceX = (touchPoint.x + touchOffset.x) - translation.x;
-        if (sqrtf(distanceX * distanceX) > kCutoffDistance) {
-            distanceX = -(-distanceX/distanceX) * kMaxFingerSpeed;
+        if (distanceX > 0) {
+            if (sqrtf(distanceX * distanceX) > kCutoffDistance) {
+                distanceX = distanceX * kMaxFingerSpeed;
+            }
+            translation.x += distanceX;
         }
-        translation.x += distanceX;
         
-    }else{
-        if (sqrtf((translation.y - startPoint.y) * (translation.y - startPoint.y)) > 80) {
+        
+    }
+    if ([witchMove isEqualToString:kMoveLeft]){
+        
+        if (sqrtf((translation.x - startPoint.x) * (translation.x - startPoint.x)) > 80) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+        }
+        
+        distanceX = (touchPoint.x + touchOffset.x) - translation.x;
+        if (distanceX < 0) {
+            if (sqrtf(distanceX * distanceX) > kCutoffDistance) {
+                distanceX = distanceX * kMaxFingerSpeed;
+            }
+            translation.x += distanceX;
+        }
+        
+    }
+    if ([witchMove isEqualToString:kMoveUp]){
+        if (sqrtf((translation.y - startPoint.y) * (translation.y - startPoint.y)) > 70) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
         }
         distanceY = (touchPoint.y + touchOffset.y) - translation.y;
-        if (distanceY > kCutoffDistance) {
-            distanceY = (-distanceY/distanceY) * kMaxFingerSpeed;
+        if (distanceY > 0) {
+            if (distanceY > kCutoffDistance) {
+                distanceY = distanceY * kMaxFingerSpeed;
+            }
+            
+            translation.y += distanceY;
         }
-        translation.y += distanceY;
+        
+    }
+    if ([witchMove isEqualToString:kMoveDown]){
+        if (sqrtf((translation.y - startPoint.y) * (translation.y - startPoint.y)) > 70) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+        }
+        distanceY = (touchPoint.y + touchOffset.y) - translation.y;
+        if (distanceY < 0) {
+            if (distanceY > kCutoffDistance) {
+                distanceY = distanceY * kMaxFingerSpeed;
+            }
+            
+            translation.y += distanceY;
+        }
+        
     }
     totalDistance.x += sqrtf(distanceX * distanceX);
     totalDistance.y += sqrtf(distanceY * distanceY);
@@ -421,45 +525,48 @@ static NSInteger tileVertexSize = 2;
 #pragma Mark Auto Move Method
 
 -(void)autoMove{
-    /*
-    if (moveCount < 5 ) {
-        NSLog(@"emptyx:%f, y: %f", emptyPosition.x, emptyPosition.y);
+    
+    if (moveCount < 10) {
+        if (!firstTile) return;
         
-        CGPoint autoMovePoint = CGPointMake(translation.x, translation.y);
-        
-        NSLog(@"autox:%f, y: %f", autoMovePoint.x, autoMovePoint.y);
-        
-        
-        if (translation.y == emptyPosition.y) {
-            xWasBigger = YES;
-            if (emptyPosition.x > translation.x) {
-                autoMovePoint.x += kAutoMoveDistance;
-            }else{
-                autoMovePoint.x -= kAutoMoveDistance;
-            }
+        if ([witchMove isEqualToString:kMoveRight]){
+            distanceX = 7;
+            translation.x += distanceX;
             
         }
-        
-        if (translation.x == emptyPosition.x){
-            xWasBigger = NO;
-            if (emptyPosition.y > translation.y) {
-                autoMovePoint.y += kAutoMoveDistance;
-            }else{
-                autoMovePoint.y -= kAutoMoveDistance;
-            }
+        if ([witchMove isEqualToString:kMoveLeft]){
+            distanceX = -7;
+            translation.x += distanceX;
+            
+        }
+        if ([witchMove isEqualToString:kMoveUp]){
+            distanceY = 7;
+            translation.y += distanceY;
+            
+        }
+        if ([witchMove isEqualToString:kMoveDown]){
+            distanceY = -7;
+            translation.y += distanceY;
+    
         }
         
-        [self moveTile:autoMovePoint];
+        totalDistance.x += sqrtf(distanceX * distanceX);
+        totalDistance.y += sqrtf(distanceY * distanceY);
         
     }else {
         autoMoveSwitch = NO;
         singleTap = NO;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"end" object:nil];
     }
-    */
+    
     moveCount += 1;
     
 }
+
+-(void)autoMoveDelay{
+    autoMoveSwitch = YES;
+}
+
 
 #pragma Mark -
 #pragma Mark Collition Methods
@@ -467,17 +574,20 @@ static NSInteger tileVertexSize = 2;
 - (void)didCollideWithY:(SceneObject *)sceneObject{
    // NSLog(@"tiles321? %i,%i,%i",thirdTile, secondTile, firstTile);
    // NSLog(@"sceneObjectTiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
-   // NSLog(@"collidedY");
+    NSLog(@"collidedY %@ %i,%i,%i", witchMove,sceneObject.firstTile,sceneObject.secondTile,sceneObject.thirdTile);
+    
     if (emptyPosition.x != translation.x) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
     }
     if (sceneObject.translation.y == translation.y) return;
+    
     if (sqrtf((translation.y - (touchOffset.y + startPoint.y)) * (translation.y - (touchOffset.y + startPoint.y))) > 70) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
     }
     if (firstTile){
+         //NSLog(@"collidedY %@", witchMove);
         stop = sceneObject.stop;
-        if (!sceneObject.secondTile){
+        if (!sceneObject.secondTile && !sceneObject.thirdTile){
             sceneObject.secondTile = YES;
             sceneObject.firstTile = NO;
             sceneObject.thirdTile = NO;
@@ -526,8 +636,7 @@ static NSInteger tileVertexSize = 2;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
            // NSLog(@"Should Stop 6");
             
-        }
-        if (sceneObject.secondTile && !stop) {
+        }else if (sceneObject.secondTile && !stop) {
             distanceY = sceneObject.distanceY;
             translation.y += (distanceY * (kSmoothingDistance + 0.5));
             
@@ -544,15 +653,15 @@ static NSInteger tileVertexSize = 2;
         }
         
     }
+    
 }
 
 - (void)didCollideWith:(SceneObject*)sceneObject 
 {
-    
-    
-    
-    if (!xWasBigger) {
+    if ([witchMove isEqualToString:kMoveUp] || [witchMove isEqualToString:kMoveDown] || [sceneObject.witchMove isEqualToString:kMoveUp] || [sceneObject.witchMove isEqualToString:kMoveDown]) {
+        
         [self didCollideWithY:sceneObject];
+        
         return;
     }
     
@@ -566,12 +675,9 @@ static NSInteger tileVertexSize = 2;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
     }
     
-    //NSLog(@"collidedx");
-    //float distanceX = (outerTouchPoint.x + touchOffset.x) - translation.x;
     if (firstTile) {
        // NSLog(@"firstTile");
         stop = sceneObject.stop;
-       // NSLog(@"Tiles321? %i,%i,%i",sceneObject.thirdTile, sceneObject.secondTile, sceneObject.firstTile);
         if (!sceneObject.secondTile && !sceneObject.thirdTile) {
             sceneObject.firstTile = NO;
             sceneObject.secondTile = YES;
@@ -591,6 +697,7 @@ static NSInteger tileVertexSize = 2;
          //   NSLog(@"stop!? %i",sceneObject.stop);
          //   NSLog(@"stop!? %i",stop);
         }
+        
     }else if(secondTile){
         
         //NSLog(@"secondTile");
@@ -638,6 +745,7 @@ static NSInteger tileVertexSize = 2;
         }
         
     }
+    
 }
 
 @end

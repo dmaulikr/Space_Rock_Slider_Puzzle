@@ -50,9 +50,12 @@
     BOOL secondTile;
     BOOL thirdTile;
     BOOL singleTap;
+    BOOL autoMoveSwitch;
     BOOL stop;
     float distanceX;
     float distanceY;
+    
+    NSString *witchMove;
 }
 
 
@@ -75,10 +78,11 @@
 @property (assign) BOOL secondTile;
 @property (assign) BOOL thirdTile;
 @property (assign) BOOL singleTap;
+@property (assign) BOOL autoMoveSwitch;
 @property (assign) BOOL stop;
 @property (assign) float distanceX;
 @property (assign) float distanceY;
-
+@property(nonatomic, retain) NSString *witchMove;
 
 - (id) init;
 - (void) dealloc;
