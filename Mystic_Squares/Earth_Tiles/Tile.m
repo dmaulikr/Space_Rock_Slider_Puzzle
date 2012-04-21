@@ -490,7 +490,7 @@ static NSInteger tileVertexSize = 2;
         
     }
     if ([witchMove isEqualToString:kMoveUp]){
-        if (sqrtf((translation.y - startPoint.y) * (translation.y - startPoint.y)) > 70) {
+        if (sqrtf((translation.y - startPoint.y) * (translation.y - startPoint.y)) > 80) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
         }
         distanceY = (touchPoint.y + touchOffset.y) - translation.y;
@@ -504,7 +504,7 @@ static NSInteger tileVertexSize = 2;
         
     }
     if ([witchMove isEqualToString:kMoveDown]){
-        if (sqrtf((translation.y - startPoint.y) * (translation.y - startPoint.y)) > 70) {
+        if (sqrtf((translation.y - startPoint.y) * (translation.y - startPoint.y)) > 80) {
             [[NSNotificationCenter defaultCenter] postNotificationName:@"stop" object:nil];
         }
         distanceY = (touchPoint.y + touchOffset.y) - translation.y;

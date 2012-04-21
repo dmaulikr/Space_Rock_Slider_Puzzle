@@ -31,7 +31,8 @@
 		4C78D22C14E2FD0B00E0DF4C /* SpaceRockAtlas.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C78D22A14E2FD0B00E0DF4C /* SpaceRockAtlas.plist */; };
 		4C78D23114E3051900E0DF4C /* AnimatedQuad.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C78D23014E3051800E0DF4C /* AnimatedQuad.m */; };
 		4C78D23814E31B5F00E0DF4C /* SpaceRockAtlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C78D23714E31B5F00E0DF4C /* SpaceRockAtlas.png */; };
-		4CA34186154100BC000C7C3A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CA34185154100BC000C7C3A /* Default.png */; };
+		4C893CAA15423FA900A64B5B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C893CA915423FA900A64B5B /* Default@2x.png */; };
+		4C893CAC15423FD500A64B5B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C893CAB15423FD500A64B5B /* Default.png */; };
 		4CA34188154101DC000C7C3A /* TilesIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CA34187154101DB000C7C3A /* TilesIcon@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -78,7 +79,8 @@
 		4C78D22F14E3051800E0DF4C /* AnimatedQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedQuad.h; sourceTree = "<group>"; };
 		4C78D23014E3051800E0DF4C /* AnimatedQuad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedQuad.m; sourceTree = "<group>"; };
 		4C78D23714E31B5F00E0DF4C /* SpaceRockAtlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpaceRockAtlas.png; sourceTree = "<group>"; };
-		4CA34185154100BC000C7C3A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4C893CA915423FA900A64B5B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4C893CAB15423FD500A64B5B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4CA34187154101DB000C7C3A /* TilesIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TilesIcon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,9 +152,10 @@
 				4C5550BC14E2012D00EC8E4B /* InfoPlist.strings */,
 				4C5550BF14E2012D00EC8E4B /* main.m */,
 				4C5550C114E2012D00EC8E4B /* Earth_Tiles-Prefix.pch */,
-				4CA34185154100BC000C7C3A /* Default.png */,
 				4C0DDC3F154102F300E55B23 /* TilesIcon.png */,
 				4CA34187154101DB000C7C3A /* TilesIcon@2x.png */,
+				4C893CA915423FA900A64B5B /* Default@2x.png */,
+				4C893CAB15423FD500A64B5B /* Default.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -266,9 +269,10 @@
 				4C5550D814E2032500EC8E4B /* MainWindow.xib in Resources */,
 				4C78D22C14E2FD0B00E0DF4C /* SpaceRockAtlas.plist in Resources */,
 				4C78D23814E31B5F00E0DF4C /* SpaceRockAtlas.png in Resources */,
-				4CA34186154100BC000C7C3A /* Default.png in Resources */,
 				4CA34188154101DC000C7C3A /* TilesIcon@2x.png in Resources */,
 				4C0DDC40154102F300E55B23 /* TilesIcon.png in Resources */,
+				4C893CAA15423FA900A64B5B /* Default@2x.png in Resources */,
+				4C893CAC15423FD500A64B5B /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,8 +322,8 @@
 					armv6,
 					armv7,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -334,7 +338,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
-				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -347,8 +350,8 @@
 					armv6,
 					armv7,
 				);
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -357,7 +360,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -366,15 +368,13 @@
 		4C5550C814E2012D00EC8E4B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Earth_Tiles/Earth_Tiles-Prefix.pch";
 				INFOPLIST_FILE = "Earth_Tiles/Earth_Tiles-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -382,15 +382,13 @@
 		4C5550C914E2012D00EC8E4B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Earth_Tiles/Earth_Tiles-Prefix.pch";
 				INFOPLIST_FILE = "Earth_Tiles/Earth_Tiles-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
