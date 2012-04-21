@@ -466,7 +466,7 @@ static NSInteger tileVertexSize = 2;
 
         distanceX = (touchPoint.x + touchOffset.x) - translation.x;
         if (distanceX > 0) {
-            if (sqrtf(distanceX * distanceX) > kCutoffDistance) {
+            if (distanceX > kCutoffDistance) {
                 distanceX = distanceX * kMaxFingerSpeed;
             }
             translation.x += distanceX;

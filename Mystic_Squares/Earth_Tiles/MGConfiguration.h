@@ -33,6 +33,6 @@
 
 // allowable tile disance per move
 #define kSmoothingDistance 1
-#define kCutoffDistance 30.0
-#define kMaxFingerSpeed 1.0
+#define kCutoffDistance 20.0
+#define kMaxFingerSpeed 0.5
 #define kAutoMoveDistance 3.0
