@@ -1,0 +1,454 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C4CD2D61543F37600DAE3B0 /* TilesIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CD2D51543F37600DAE3B0 /* TilesIcon@2x.png */; };
+		4C4CD2D81543F37C00DAE3B0 /* TilesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CD2D71543F37C00DAE3B0 /* TilesIcon.png */; };
+		540DE5D615434F5F006CD183 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540DE5D515434F5F006CD183 /* UIKit.framework */; };
+		540DE5D815434F5F006CD183 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540DE5D715434F5F006CD183 /* Foundation.framework */; };
+		540DE5DA15434F5F006CD183 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540DE5D915434F5F006CD183 /* CoreGraphics.framework */; };
+		540DE5E015434F5F006CD183 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 540DE5DE15434F5F006CD183 /* InfoPlist.strings */; };
+		540DE5E215434F5F006CD183 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE5E115434F5F006CD183 /* main.m */; };
+		540DE5E615434F5F006CD183 /* MGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE5E515434F5F006CD183 /* MGAppDelegate.m */; };
+		540DE5E915434F5F006CD183 /* MGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE5E815434F5F006CD183 /* MGViewController.m */; };
+		540DE5EC15434F60006CD183 /* MGViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540DE5EA15434F60006CD183 /* MGViewController_iPhone.xib */; };
+		540DE5EF15434F60006CD183 /* MGViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540DE5ED15434F60006CD183 /* MGViewController_iPad.xib */; };
+		540DE5F815434FFE006CD183 /* AnimatedQuad.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE5F715434FFE006CD183 /* AnimatedQuad.m */; };
+		540DE5FB1543500D006CD183 /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE5FA1543500D006CD183 /* EAGLView.m */; };
+		540DE5FE1543501F006CD183 /* InputVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE5FD1543501F006CD183 /* InputVC.m */; };
+		540DE607154350E7006CD183 /* SpaceRockAtlas.plist in Resources */ = {isa = PBXBuildFile; fileRef = 540DE5FF154350E7006CD183 /* SpaceRockAtlas.plist */; };
+		540DE608154350E7006CD183 /* SpaceRockAtlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 540DE600154350E7006CD183 /* SpaceRockAtlas.png */; };
+		540DE609154350E7006CD183 /* TextureQuad.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE602154350E7006CD183 /* TextureQuad.m */; };
+		540DE60A154350E7006CD183 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE604154350E7006CD183 /* Tile.m */; };
+		540DE60B154350E7006CD183 /* TilesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 540DE605154350E7006CD183 /* TilesIcon.png */; };
+		540DE60C154350E7006CD183 /* TilesIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 540DE606154350E7006CD183 /* TilesIcon@2x.png */; };
+		540DE61115435103006CD183 /* MaterialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE60E15435103006CD183 /* MaterialController.m */; };
+		540DE61215435103006CD183 /* Mesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE61015435103006CD183 /* Mesh.m */; };
+		540DE61B15435111006CD183 /* MGCollider.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE61415435111006CD183 /* MGCollider.m */; };
+		540DE61C15435111006CD183 /* MGCollisionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE61615435111006CD183 /* MGCollisionController.m */; };
+		540DE61D15435111006CD183 /* MGMobileObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE61915435111006CD183 /* MGMobileObject.m */; };
+		540DE62215435120006CD183 /* SceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE61F15435120006CD183 /* SceneController.m */; };
+		540DE62315435120006CD183 /* SceneObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE62115435120006CD183 /* SceneObject.m */; };
+		540DE62A1543559B006CD183 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540DE6291543559B006CD183 /* QuartzCore.framework */; };
+		540DE62C154355AC006CD183 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540DE62B154355AC006CD183 /* OpenGLES.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4C4CD2D51543F37600DAE3B0 /* TilesIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TilesIcon@2x.png"; sourceTree = "<group>"; };
+		4C4CD2D71543F37C00DAE3B0 /* TilesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TilesIcon.png; sourceTree = "<group>"; };
+		540DE5D115434F5F006CD183 /* Earth_Tiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Earth_Tiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		540DE5D515434F5F006CD183 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		540DE5D715434F5F006CD183 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		540DE5D915434F5F006CD183 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		540DE5DD15434F5F006CD183 /* Earth_Tiles-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Earth_Tiles-Info.plist"; sourceTree = "<group>"; };
+		540DE5DF15434F5F006CD183 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		540DE5E115434F5F006CD183 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		540DE5E315434F5F006CD183 /* Earth_Tiles-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Earth_Tiles-Prefix.pch"; sourceTree = "<group>"; };
+		540DE5E415434F5F006CD183 /* MGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGAppDelegate.h; sourceTree = "<group>"; };
+		540DE5E515434F5F006CD183 /* MGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGAppDelegate.m; sourceTree = "<group>"; };
+		540DE5E715434F5F006CD183 /* MGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MGViewController.h; sourceTree = "<group>"; };
+		540DE5E815434F5F006CD183 /* MGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MGViewController.m; sourceTree = "<group>"; };
+		540DE5EB15434F60006CD183 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MGViewController_iPhone.xib; sourceTree = "<group>"; };
+		540DE5EE15434F60006CD183 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MGViewController_iPad.xib; sourceTree = "<group>"; };
+		540DE5F615434FFE006CD183 /* AnimatedQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedQuad.h; sourceTree = "<group>"; };
+		540DE5F715434FFE006CD183 /* AnimatedQuad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedQuad.m; sourceTree = "<group>"; };
+		540DE5F91543500D006CD183 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
+		540DE5FA1543500D006CD183 /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
+		540DE5FC1543501F006CD183 /* InputVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputVC.h; sourceTree = "<group>"; };
+		540DE5FD1543501F006CD183 /* InputVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputVC.m; sourceTree = "<group>"; };
+		540DE5FF154350E7006CD183 /* SpaceRockAtlas.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SpaceRockAtlas.plist; sourceTree = "<group>"; };
+		540DE600154350E7006CD183 /* SpaceRockAtlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SpaceRockAtlas.png; path = Earth_Tiles/SpaceRockAtlas.png; sourceTree = "<group>"; };
+		540DE601154350E7006CD183 /* TextureQuad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextureQuad.h; sourceTree = "<group>"; };
+		540DE602154350E7006CD183 /* TextureQuad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureQuad.m; sourceTree = "<group>"; };
+		540DE603154350E7006CD183 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
+		540DE604154350E7006CD183 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
+		540DE605154350E7006CD183 /* TilesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TilesIcon.png; path = Earth_Tiles/TilesIcon.png; sourceTree = "<group>"; };
+		540DE606154350E7006CD183 /* TilesIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TilesIcon@2x.png"; path = "Earth_Tiles/TilesIcon@2x.png"; sourceTree = "<group>"; };
+		540DE60D15435103006CD183 /* MaterialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialController.h; sourceTree = "<group>"; };
+		540DE60E15435103006CD183 /* MaterialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialController.m; sourceTree = "<group>"; };
+		540DE60F15435103006CD183 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
+		540DE61015435103006CD183 /* Mesh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mesh.m; sourceTree = "<group>"; };
+		540DE61315435111006CD183 /* MGCollider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCollider.h; sourceTree = "<group>"; };
+		540DE61415435111006CD183 /* MGCollider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCollider.m; sourceTree = "<group>"; };
+		540DE61515435111006CD183 /* MGCollisionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGCollisionController.h; sourceTree = "<group>"; };
+		540DE61615435111006CD183 /* MGCollisionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGCollisionController.m; sourceTree = "<group>"; };
+		540DE61715435111006CD183 /* MGConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGConfiguration.h; sourceTree = "<group>"; };
+		540DE61815435111006CD183 /* MGMobileObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGMobileObject.h; sourceTree = "<group>"; };
+		540DE61915435111006CD183 /* MGMobileObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMobileObject.m; sourceTree = "<group>"; };
+		540DE61A15435111006CD183 /* MGPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGPoint.h; sourceTree = "<group>"; };
+		540DE61E15435120006CD183 /* SceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneController.h; sourceTree = "<group>"; };
+		540DE61F15435120006CD183 /* SceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneController.m; sourceTree = "<group>"; };
+		540DE62015435120006CD183 /* SceneObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneObject.h; sourceTree = "<group>"; };
+		540DE62115435120006CD183 /* SceneObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneObject.m; sourceTree = "<group>"; };
+		540DE6291543559B006CD183 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		540DE62B154355AC006CD183 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		540DE5CE15434F5F006CD183 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				540DE62C154355AC006CD183 /* OpenGLES.framework in Frameworks */,
+				540DE62A1543559B006CD183 /* QuartzCore.framework in Frameworks */,
+				540DE5D615434F5F006CD183 /* UIKit.framework in Frameworks */,
+				540DE5D815434F5F006CD183 /* Foundation.framework in Frameworks */,
+				540DE5DA15434F5F006CD183 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		540DE5C615434F5F006CD183 = {
+			isa = PBXGroup;
+			children = (
+				4C4CD2D71543F37C00DAE3B0 /* TilesIcon.png */,
+				4C4CD2D51543F37600DAE3B0 /* TilesIcon@2x.png */,
+				540DE5DB15434F5F006CD183 /* Earth_Tiles */,
+				540DE5D415434F5F006CD183 /* Frameworks */,
+				540DE5D215434F5F006CD183 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		540DE5D215434F5F006CD183 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				540DE5D115434F5F006CD183 /* Earth_Tiles.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		540DE5D415434F5F006CD183 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				540DE62B154355AC006CD183 /* OpenGLES.framework */,
+				540DE6291543559B006CD183 /* QuartzCore.framework */,
+				540DE5D515434F5F006CD183 /* UIKit.framework */,
+				540DE5D715434F5F006CD183 /* Foundation.framework */,
+				540DE5D915434F5F006CD183 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		540DE5DB15434F5F006CD183 /* Earth_Tiles */ = {
+			isa = PBXGroup;
+			children = (
+				540DE5E415434F5F006CD183 /* MGAppDelegate.h */,
+				540DE5E515434F5F006CD183 /* MGAppDelegate.m */,
+				540DE5E715434F5F006CD183 /* MGViewController.h */,
+				540DE5E815434F5F006CD183 /* MGViewController.m */,
+				540DE5EA15434F60006CD183 /* MGViewController_iPhone.xib */,
+				540DE5ED15434F60006CD183 /* MGViewController_iPad.xib */,
+				540DE5F515434F84006CD183 /* Puzzle View Files */,
+				540DE6251543519A006CD183 /* Tile Object */,
+				540DE5DC15434F5F006CD183 /* Supporting Files */,
+				540DE62815435254006CD183 /* Images */,
+			);
+			path = Earth_Tiles;
+			sourceTree = "<group>";
+		};
+		540DE5DC15434F5F006CD183 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				540DE5DD15434F5F006CD183 /* Earth_Tiles-Info.plist */,
+				540DE5FF154350E7006CD183 /* SpaceRockAtlas.plist */,
+				540DE5DE15434F5F006CD183 /* InfoPlist.strings */,
+				540DE5E115434F5F006CD183 /* main.m */,
+				540DE5E315434F5F006CD183 /* Earth_Tiles-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		540DE5F515434F84006CD183 /* Puzzle View Files */ = {
+			isa = PBXGroup;
+			children = (
+				540DE626154351DA006CD183 /* Config */,
+				540DE627154351F4006CD183 /* Simple Game Engine */,
+			);
+			name = "Puzzle View Files";
+			sourceTree = "<group>";
+		};
+		540DE62415435171006CD183 /* Scene Object Parents */ = {
+			isa = PBXGroup;
+			children = (
+				540DE62015435120006CD183 /* SceneObject.h */,
+				540DE62115435120006CD183 /* SceneObject.m */,
+				540DE61315435111006CD183 /* MGCollider.h */,
+				540DE61415435111006CD183 /* MGCollider.m */,
+				540DE61515435111006CD183 /* MGCollisionController.h */,
+				540DE61615435111006CD183 /* MGCollisionController.m */,
+				540DE61815435111006CD183 /* MGMobileObject.h */,
+				540DE61915435111006CD183 /* MGMobileObject.m */,
+				540DE60D15435103006CD183 /* MaterialController.h */,
+				540DE60E15435103006CD183 /* MaterialController.m */,
+				540DE60F15435103006CD183 /* Mesh.h */,
+				540DE61015435103006CD183 /* Mesh.m */,
+				540DE5F615434FFE006CD183 /* AnimatedQuad.h */,
+				540DE5F715434FFE006CD183 /* AnimatedQuad.m */,
+				540DE601154350E7006CD183 /* TextureQuad.h */,
+				540DE602154350E7006CD183 /* TextureQuad.m */,
+			);
+			name = "Scene Object Parents";
+			sourceTree = "<group>";
+		};
+		540DE6251543519A006CD183 /* Tile Object */ = {
+			isa = PBXGroup;
+			children = (
+				540DE603154350E7006CD183 /* Tile.h */,
+				540DE604154350E7006CD183 /* Tile.m */,
+			);
+			name = "Tile Object";
+			sourceTree = "<group>";
+		};
+		540DE626154351DA006CD183 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				540DE61715435111006CD183 /* MGConfiguration.h */,
+				540DE61A15435111006CD183 /* MGPoint.h */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		540DE627154351F4006CD183 /* Simple Game Engine */ = {
+			isa = PBXGroup;
+			children = (
+				540DE61E15435120006CD183 /* SceneController.h */,
+				540DE61F15435120006CD183 /* SceneController.m */,
+				540DE5FC1543501F006CD183 /* InputVC.h */,
+				540DE5FD1543501F006CD183 /* InputVC.m */,
+				540DE5F91543500D006CD183 /* EAGLView.h */,
+				540DE5FA1543500D006CD183 /* EAGLView.m */,
+				540DE62415435171006CD183 /* Scene Object Parents */,
+			);
+			name = "Simple Game Engine";
+			sourceTree = "<group>";
+		};
+		540DE62815435254006CD183 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				540DE600154350E7006CD183 /* SpaceRockAtlas.png */,
+				540DE605154350E7006CD183 /* TilesIcon.png */,
+				540DE606154350E7006CD183 /* TilesIcon@2x.png */,
+			);
+			name = Images;
+			path = ..;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		540DE5D015434F5F006CD183 /* Earth_Tiles */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 540DE5F215434F60006CD183 /* Build configuration list for PBXNativeTarget "Earth_Tiles" */;
+			buildPhases = (
+				540DE5CD15434F5F006CD183 /* Sources */,
+				540DE5CE15434F5F006CD183 /* Frameworks */,
+				540DE5CF15434F5F006CD183 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Earth_Tiles;
+			productName = Earth_Tiles;
+			productReference = 540DE5D115434F5F006CD183 /* Earth_Tiles.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		540DE5C815434F5F006CD183 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MG;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 540DE5CB15434F5F006CD183 /* Build configuration list for PBXProject "Earth_Tiles" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 540DE5C615434F5F006CD183;
+			productRefGroup = 540DE5D215434F5F006CD183 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				540DE5D015434F5F006CD183 /* Earth_Tiles */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		540DE5CF15434F5F006CD183 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				540DE5E015434F5F006CD183 /* InfoPlist.strings in Resources */,
+				540DE5EC15434F60006CD183 /* MGViewController_iPhone.xib in Resources */,
+				540DE5EF15434F60006CD183 /* MGViewController_iPad.xib in Resources */,
+				540DE607154350E7006CD183 /* SpaceRockAtlas.plist in Resources */,
+				540DE608154350E7006CD183 /* SpaceRockAtlas.png in Resources */,
+				540DE60B154350E7006CD183 /* TilesIcon.png in Resources */,
+				540DE60C154350E7006CD183 /* TilesIcon@2x.png in Resources */,
+				4C4CD2D61543F37600DAE3B0 /* TilesIcon@2x.png in Resources */,
+				4C4CD2D81543F37C00DAE3B0 /* TilesIcon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		540DE5CD15434F5F006CD183 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				540DE5E215434F5F006CD183 /* main.m in Sources */,
+				540DE5E615434F5F006CD183 /* MGAppDelegate.m in Sources */,
+				540DE5E915434F5F006CD183 /* MGViewController.m in Sources */,
+				540DE5F815434FFE006CD183 /* AnimatedQuad.m in Sources */,
+				540DE5FB1543500D006CD183 /* EAGLView.m in Sources */,
+				540DE5FE1543501F006CD183 /* InputVC.m in Sources */,
+				540DE609154350E7006CD183 /* TextureQuad.m in Sources */,
+				540DE60A154350E7006CD183 /* Tile.m in Sources */,
+				540DE61115435103006CD183 /* MaterialController.m in Sources */,
+				540DE61215435103006CD183 /* Mesh.m in Sources */,
+				540DE61B15435111006CD183 /* MGCollider.m in Sources */,
+				540DE61C15435111006CD183 /* MGCollisionController.m in Sources */,
+				540DE61D15435111006CD183 /* MGMobileObject.m in Sources */,
+				540DE62215435120006CD183 /* SceneController.m in Sources */,
+				540DE62315435120006CD183 /* SceneObject.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		540DE5DE15434F5F006CD183 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				540DE5DF15434F5F006CD183 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		540DE5EA15434F60006CD183 /* MGViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				540DE5EB15434F60006CD183 /* en */,
+			);
+			name = MGViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		540DE5ED15434F60006CD183 /* MGViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				540DE5EE15434F60006CD183 /* en */,
+			);
+			name = MGViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		540DE5F015434F60006CD183 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		540DE5F115434F60006CD183 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		540DE5F315434F60006CD183 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Earth_Tiles/Earth_Tiles-Prefix.pch";
+				INFOPLIST_FILE = "Earth_Tiles/Earth_Tiles-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		540DE5F415434F60006CD183 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Earth_Tiles/Earth_Tiles-Prefix.pch";
+				INFOPLIST_FILE = "Earth_Tiles/Earth_Tiles-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		540DE5CB15434F5F006CD183 /* Build configuration list for PBXProject "Earth_Tiles" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				540DE5F015434F60006CD183 /* Debug */,
+				540DE5F115434F60006CD183 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		540DE5F215434F60006CD183 /* Build configuration list for PBXNativeTarget "Earth_Tiles" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				540DE5F315434F60006CD183 /* Debug */,
+				540DE5F415434F60006CD183 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 540DE5C815434F5F006CD183 /* Project object */;
+}
