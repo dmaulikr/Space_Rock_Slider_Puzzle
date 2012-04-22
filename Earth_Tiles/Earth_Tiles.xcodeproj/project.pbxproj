@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4C4CD2D61543F37600DAE3B0 /* TilesIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CD2D51543F37600DAE3B0 /* TilesIcon@2x.png */; };
 		4C4CD2D81543F37C00DAE3B0 /* TilesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CD2D71543F37C00DAE3B0 /* TilesIcon.png */; };
+		4C4CD2DA1543F4E300DAE3B0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CD2D91543F4E300DAE3B0 /* Default@2x.png */; };
+		4C4CD2DC1543F4EA00DAE3B0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CD2DB1543F4EA00DAE3B0 /* Default.png */; };
 		540DE5D615434F5F006CD183 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540DE5D515434F5F006CD183 /* UIKit.framework */; };
 		540DE5D815434F5F006CD183 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540DE5D715434F5F006CD183 /* Foundation.framework */; };
 		540DE5DA15434F5F006CD183 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540DE5D915434F5F006CD183 /* CoreGraphics.framework */; };
@@ -25,8 +27,6 @@
 		540DE608154350E7006CD183 /* SpaceRockAtlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 540DE600154350E7006CD183 /* SpaceRockAtlas.png */; };
 		540DE609154350E7006CD183 /* TextureQuad.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE602154350E7006CD183 /* TextureQuad.m */; };
 		540DE60A154350E7006CD183 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE604154350E7006CD183 /* Tile.m */; };
-		540DE60B154350E7006CD183 /* TilesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 540DE605154350E7006CD183 /* TilesIcon.png */; };
-		540DE60C154350E7006CD183 /* TilesIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 540DE606154350E7006CD183 /* TilesIcon@2x.png */; };
 		540DE61115435103006CD183 /* MaterialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE60E15435103006CD183 /* MaterialController.m */; };
 		540DE61215435103006CD183 /* Mesh.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE61015435103006CD183 /* Mesh.m */; };
 		540DE61B15435111006CD183 /* MGCollider.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE61415435111006CD183 /* MGCollider.m */; };
@@ -41,6 +41,8 @@
 /* Begin PBXFileReference section */
 		4C4CD2D51543F37600DAE3B0 /* TilesIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TilesIcon@2x.png"; sourceTree = "<group>"; };
 		4C4CD2D71543F37C00DAE3B0 /* TilesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TilesIcon.png; sourceTree = "<group>"; };
+		4C4CD2D91543F4E300DAE3B0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4C4CD2DB1543F4EA00DAE3B0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		540DE5D115434F5F006CD183 /* Earth_Tiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Earth_Tiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		540DE5D515434F5F006CD183 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		540DE5D715434F5F006CD183 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -67,8 +69,6 @@
 		540DE602154350E7006CD183 /* TextureQuad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextureQuad.m; sourceTree = "<group>"; };
 		540DE603154350E7006CD183 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		540DE604154350E7006CD183 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
-		540DE605154350E7006CD183 /* TilesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TilesIcon.png; path = Earth_Tiles/TilesIcon.png; sourceTree = "<group>"; };
-		540DE606154350E7006CD183 /* TilesIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TilesIcon@2x.png"; path = "Earth_Tiles/TilesIcon@2x.png"; sourceTree = "<group>"; };
 		540DE60D15435103006CD183 /* MaterialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialController.h; sourceTree = "<group>"; };
 		540DE60E15435103006CD183 /* MaterialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialController.m; sourceTree = "<group>"; };
 		540DE60F15435103006CD183 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
@@ -108,8 +108,6 @@
 		540DE5C615434F5F006CD183 = {
 			isa = PBXGroup;
 			children = (
-				4C4CD2D71543F37C00DAE3B0 /* TilesIcon.png */,
-				4C4CD2D51543F37600DAE3B0 /* TilesIcon@2x.png */,
 				540DE5DB15434F5F006CD183 /* Earth_Tiles */,
 				540DE5D415434F5F006CD183 /* Frameworks */,
 				540DE5D215434F5F006CD183 /* Products */,
@@ -232,9 +230,11 @@
 		540DE62815435254006CD183 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4C4CD2D71543F37C00DAE3B0 /* TilesIcon.png */,
+				4C4CD2D51543F37600DAE3B0 /* TilesIcon@2x.png */,
 				540DE600154350E7006CD183 /* SpaceRockAtlas.png */,
-				540DE605154350E7006CD183 /* TilesIcon.png */,
-				540DE606154350E7006CD183 /* TilesIcon@2x.png */,
+				4C4CD2DB1543F4EA00DAE3B0 /* Default.png */,
+				4C4CD2D91543F4E300DAE3B0 /* Default@2x.png */,
 			);
 			name = Images;
 			path = ..;
@@ -296,10 +296,10 @@
 				540DE5EF15434F60006CD183 /* MGViewController_iPad.xib in Resources */,
 				540DE607154350E7006CD183 /* SpaceRockAtlas.plist in Resources */,
 				540DE608154350E7006CD183 /* SpaceRockAtlas.png in Resources */,
-				540DE60B154350E7006CD183 /* TilesIcon.png in Resources */,
-				540DE60C154350E7006CD183 /* TilesIcon@2x.png in Resources */,
 				4C4CD2D61543F37600DAE3B0 /* TilesIcon@2x.png in Resources */,
 				4C4CD2D81543F37C00DAE3B0 /* TilesIcon.png in Resources */,
+				4C4CD2DA1543F4E300DAE3B0 /* Default@2x.png in Resources */,
+				4C4CD2DC1543F4EA00DAE3B0 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
