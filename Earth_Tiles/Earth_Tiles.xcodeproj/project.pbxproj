@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C4CD2D61543F37600DAE3B0 /* TilesIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CD2D51543F37600DAE3B0 /* TilesIcon@2x.png */; };
-		4C4CD2D81543F37C00DAE3B0 /* TilesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CD2D71543F37C00DAE3B0 /* TilesIcon.png */; };
-		4C4CD2DA1543F4E300DAE3B0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CD2D91543F4E300DAE3B0 /* Default@2x.png */; };
-		4C4CD2DC1543F4EA00DAE3B0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C4CD2DB1543F4EA00DAE3B0 /* Default.png */; };
+		4CA09A10154530FC0033A7D7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CA09A0F154530FC0033A7D7 /* Default@2x.png */; };
+		4CA09A15154533180033A7D7 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CA09A14154533180033A7D7 /* Default-Portrait~ipad.png */; };
+		4CA09A171545331F0033A7D7 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CA09A161545331F0033A7D7 /* Default-Landscape~ipad.png */; };
 		540DE5D615434F5F006CD183 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540DE5D515434F5F006CD183 /* UIKit.framework */; };
 		540DE5D815434F5F006CD183 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540DE5D715434F5F006CD183 /* Foundation.framework */; };
 		540DE5DA15434F5F006CD183 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540DE5D915434F5F006CD183 /* CoreGraphics.framework */; };
@@ -36,13 +35,15 @@
 		540DE62315435120006CD183 /* SceneObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 540DE62115435120006CD183 /* SceneObject.m */; };
 		540DE62A1543559B006CD183 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540DE6291543559B006CD183 /* QuartzCore.framework */; };
 		540DE62C154355AC006CD183 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540DE62B154355AC006CD183 /* OpenGLES.framework */; };
+		54DFBE531544D3B0002B55A2 /* TilesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 54DFBE521544D3B0002B55A2 /* TilesIcon.png */; };
+		54DFBE551544D3B4002B55A2 /* TilesIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 54DFBE541544D3B4002B55A2 /* TilesIcon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4C4CD2D51543F37600DAE3B0 /* TilesIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TilesIcon@2x.png"; sourceTree = "<group>"; };
-		4C4CD2D71543F37C00DAE3B0 /* TilesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TilesIcon.png; sourceTree = "<group>"; };
-		4C4CD2D91543F4E300DAE3B0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		4C4CD2DB1543F4EA00DAE3B0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4CA09A0F154530FC0033A7D7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4CA09A12154531030033A7D7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4CA09A14154533180033A7D7 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		4CA09A161545331F0033A7D7 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		540DE5D115434F5F006CD183 /* Earth_Tiles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Earth_Tiles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		540DE5D515434F5F006CD183 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		540DE5D715434F5F006CD183 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -87,6 +88,8 @@
 		540DE62115435120006CD183 /* SceneObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneObject.m; sourceTree = "<group>"; };
 		540DE6291543559B006CD183 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		540DE62B154355AC006CD183 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		54DFBE521544D3B0002B55A2 /* TilesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TilesIcon.png; sourceTree = "<group>"; };
+		54DFBE541544D3B4002B55A2 /* TilesIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TilesIcon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,11 +233,13 @@
 		540DE62815435254006CD183 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				4C4CD2D71543F37C00DAE3B0 /* TilesIcon.png */,
-				4C4CD2D51543F37600DAE3B0 /* TilesIcon@2x.png */,
+				54DFBE541544D3B4002B55A2 /* TilesIcon@2x.png */,
+				54DFBE521544D3B0002B55A2 /* TilesIcon.png */,
 				540DE600154350E7006CD183 /* SpaceRockAtlas.png */,
-				4C4CD2DB1543F4EA00DAE3B0 /* Default.png */,
-				4C4CD2D91543F4E300DAE3B0 /* Default@2x.png */,
+				4CA09A161545331F0033A7D7 /* Default-Landscape~ipad.png */,
+				4CA09A14154533180033A7D7 /* Default-Portrait~ipad.png */,
+				4CA09A12154531030033A7D7 /* Default.png */,
+				4CA09A0F154530FC0033A7D7 /* Default@2x.png */,
 			);
 			name = Images;
 			path = ..;
@@ -296,10 +301,11 @@
 				540DE5EF15434F60006CD183 /* MGViewController_iPad.xib in Resources */,
 				540DE607154350E7006CD183 /* SpaceRockAtlas.plist in Resources */,
 				540DE608154350E7006CD183 /* SpaceRockAtlas.png in Resources */,
-				4C4CD2D61543F37600DAE3B0 /* TilesIcon@2x.png in Resources */,
-				4C4CD2D81543F37C00DAE3B0 /* TilesIcon.png in Resources */,
-				4C4CD2DA1543F4E300DAE3B0 /* Default@2x.png in Resources */,
-				4C4CD2DC1543F4EA00DAE3B0 /* Default.png in Resources */,
+				54DFBE531544D3B0002B55A2 /* TilesIcon.png in Resources */,
+				54DFBE551544D3B4002B55A2 /* TilesIcon@2x.png in Resources */,
+				4CA09A10154530FC0033A7D7 /* Default@2x.png in Resources */,
+				4CA09A15154533180033A7D7 /* Default-Portrait~ipad.png in Resources */,
+				4CA09A171545331F0033A7D7 /* Default-Landscape~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,7 +415,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Earth_Tiles/Earth_Tiles-Prefix.pch";
 				INFOPLIST_FILE = "Earth_Tiles/Earth_Tiles-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -421,7 +427,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Earth_Tiles/Earth_Tiles-Prefix.pch";
 				INFOPLIST_FILE = "Earth_Tiles/Earth_Tiles-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

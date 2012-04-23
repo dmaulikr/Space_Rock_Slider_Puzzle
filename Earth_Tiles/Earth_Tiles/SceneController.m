@@ -185,8 +185,8 @@
         //switch to most likely open space using
         //the touched tile and last empty position.
         
-        NSLog(@"startPosition: %f, %f", startingTile.x, startingTile.y);
-        NSLog(@"lastEmptyPosition: %f, %f", lastEmptySpace.x, lastEmptySpace.y);
+        //NSLog(@"startPosition: %f, %f", startingTile.x, startingTile.y);
+        //NSLog(@"lastEmptyPosition: %f, %f", lastEmptySpace.x, lastEmptySpace.y);
         spaceFilled = NO;
         if (startingTile.x == lastEmptySpace.x){
             //Then it must be in the same column.
@@ -204,7 +204,7 @@
                 if (tile.fTilePosition.x == lastPoint.x) {
                     if (CGPointEqualToPoint(lastPoint, tile.fTilePosition)) {
                         spaceFilled = YES;
-                        NSLog(@"They're Equal\n\n..");
+                       // NSLog(@"They're Equal\n\n..");
                         break;
                         
                     }
@@ -230,7 +230,7 @@
                 if (tile.fTilePosition.y == lastPoint.y) {
                     if (CGPointEqualToPoint(lastPoint, tile.fTilePosition)) {
                         spaceFilled = YES;
-                        NSLog(@"They're Equal\n\n..");
+                       // NSLog(@"They're Equal\n\n..");
                         break;
                         
                     }

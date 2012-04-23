@@ -37,6 +37,7 @@
     NSInteger tilesChecked;
     
     BOOL pointInBounds;
+    BOOL autoMoveInProgress;
     
     CGPoint p0;
     CGPoint p1;

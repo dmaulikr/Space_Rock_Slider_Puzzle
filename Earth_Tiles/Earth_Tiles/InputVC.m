@@ -86,6 +86,12 @@
 	
 }
 
+- (void)automoveInProgress:(BOOL)inProgress{
+    
+    self.view.userInteractionEnabled = !inProgress;
+    
+}
+
 #pragma mark unload, dealloc
 
 - (void)didReceiveMemoryWarning {

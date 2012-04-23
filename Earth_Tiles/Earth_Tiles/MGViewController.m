@@ -30,7 +30,10 @@
 	// make a new input view controller, and save it as an instance variable
 	InputVC * anInputController = [[InputVC alloc] initWithNibName:nil bundle:nil];
 	sceneController.inputController = anInputController;
-	[anInputController release];
+	
+    
+    
+    [anInputController release];
     
     EAGLView * glView = [[EAGLView alloc] initWithFrame:puzzleView.bounds];
 	sceneController.inputController.view = glView;

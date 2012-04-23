@@ -24,12 +24,13 @@
 @property (retain) NSMutableSet* endTouchEvents;
 
 - (CGRect)screenRectFromMeshRect:(CGRect)rect atPoint:(CGPoint)meshCenter;
-//- (BOOL)touchesDidBegin;
+
 - (void)clearEvents;
 - (void)dealloc ;
 - (void)didReceiveMemoryWarning ;
-//- (void)loadView ;
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
+- (void)automoveInProgress:(BOOL)inProgress;
 - (void)viewDidUnload ;
 
 @end
