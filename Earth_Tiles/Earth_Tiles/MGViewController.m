@@ -33,12 +33,10 @@
 	
     
     
-    [anInputController release];
     
     EAGLView * glView = [[EAGLView alloc] initWithFrame:puzzleView.bounds];
 	sceneController.inputController.view = glView;
 	sceneController.openGLView = glView;
-	[glView release];
 
     [puzzleView addSubview:sceneController.inputController.view];
     

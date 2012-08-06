@@ -102,25 +102,25 @@
 
 - (void)gameLoop
 {
-	NSAutoreleasePool * apool = [[NSAutoreleasePool alloc] init];
+	@autoreleasepool {
     
 	// collect game metrics for time and performance.
-    thisFrameStartTime = [levelStartDate timeIntervalSinceNow];
+        thisFrameStartTime = [levelStartDate timeIntervalSinceNow];
 	deltaTime =  lastFrameStartTime - thisFrameStartTime;
 	lastFrameStartTime = thisFrameStartTime;
-    
-    // add any queued scene objects
+        
+        // add any queued scene objects
 	if ([objectsToAdd count] > 0) {
 		[sceneObjects addObjectsFromArray:objectsToAdd];
 		[objectsToAdd removeAllObjects];
 	}
-    
+        
 	// update our model
 	[self updateModel];
 	
-    //deal with collisions
+        //deal with collisions
 	[collisionController handleCollisions];
-    
+        
 	// send our objects to the renderer
 	[self renderScene];
 	
@@ -130,7 +130,7 @@
 		[objectsToRemove removeAllObjects];
 	}
 	
-	[apool release];
+	}
 }
 
 - (void)updateModel
@@ -260,14 +260,7 @@
 {
 	[self stopAnimation];
 	
-	[sceneObjects release];
-	[objectsToAdd release];
-	[objectsToRemove release];
-	[inputController release];
-	[openGLView release];
-	[collisionController release];
 	
-	[super dealloc];
 }
 
 @end

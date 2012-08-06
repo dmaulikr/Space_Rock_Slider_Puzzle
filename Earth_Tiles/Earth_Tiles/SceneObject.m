@@ -96,10 +96,7 @@
 
 - (void) dealloc
 {
-	[mesh release];
-	[collider release];
 	free(matrix);
-    [super dealloc];
 }
 
 - (void)didCollideWith:(SceneObject*)sceneObject 

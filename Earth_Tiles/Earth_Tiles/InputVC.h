@@ -19,9 +19,9 @@
     NSMutableSet* endTouchEvents;
 }
 
-@property (retain) NSMutableSet* beganTouchEvents;
-@property (retain) NSMutableSet* movedTouchEvents;
-@property (retain) NSMutableSet* endTouchEvents;
+@property (strong) NSMutableSet* beganTouchEvents;
+@property (strong) NSMutableSet* movedTouchEvents;
+@property (strong) NSMutableSet* endTouchEvents;
 
 - (CGRect)screenRectFromMeshRect:(CGRect)rect atPoint:(CGPoint)meshCenter;
 

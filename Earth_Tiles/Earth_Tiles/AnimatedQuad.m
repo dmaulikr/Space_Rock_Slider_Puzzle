@@ -54,7 +54,6 @@
 - (void) dealloc
 {
 	uvCoordinates = 0;
-	[super dealloc];
 }
 
 @end

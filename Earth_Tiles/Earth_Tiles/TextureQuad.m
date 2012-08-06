@@ -54,6 +54,5 @@ static CGFloat MGTexturedQuadColorValues[16] = {1.0,1.0,1.0,1.0, 1.0,1.0,1.0,1.0
 - (void) dealloc
 {
 	free(uvCoordinates);
-	[super dealloc];
 }
 @end

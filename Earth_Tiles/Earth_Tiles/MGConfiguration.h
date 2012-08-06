@@ -25,10 +25,10 @@
 // initial position string
 
 // clean world
-#define kInitialPositionsC @"0123456789ABCDEF"
+#define kInitialPositions @"0123456789ABCDEF"
 
 
-#define kInitialPositions @"FE1B9065D2CA7834"
+//#define kInitialPositions @"FE1B9065D2CA7834"
 
 
 // allowable tile disance per move

@@ -86,8 +86,4 @@
 	return meshBounds;
 }
 
-- (void) dealloc
-{
-	[super dealloc];
-}
 @end

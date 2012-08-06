@@ -24,7 +24,7 @@
 	InputVC * inputController;
 	EAGLView * openGLView;
 	
-	NSTimer *animationTimer;
+	NSTimer *__unsafe_unretained animationTimer;
 	NSTimeInterval animationInterval;
     
     MGCollisionController *collisionController;
@@ -37,12 +37,12 @@
 
 }
 
-@property (retain) InputVC * inputController;
-@property (retain) EAGLView * openGLView;
-@property (retain) NSDate * levelStartDate;
+@property (strong) InputVC * inputController;
+@property (strong) EAGLView * openGLView;
+@property (strong) NSDate * levelStartDate;
 @property NSTimeInterval deltaTime;
 @property NSTimeInterval animationInterval;
-@property (nonatomic, assign) NSTimer *animationTimer;
+@property (nonatomic, unsafe_unretained) NSTimer *animationTimer;
 
 + (SceneController*)sharedSceneController;
 - (void) dealloc;

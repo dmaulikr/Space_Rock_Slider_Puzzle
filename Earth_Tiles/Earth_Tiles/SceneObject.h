@@ -60,8 +60,8 @@
 
 
 @property (assign) CGRect meshBounds;
-@property (retain) Mesh * mesh;
-@property (retain) MGCollider * collider;
+@property (strong) Mesh * mesh;
+@property (strong) MGCollider * collider;
 @property (assign) CGFloat * matrix;
 
 @property (assign) MGPoint translation;
@@ -82,7 +82,7 @@
 @property (assign) BOOL stop;
 @property (assign) float distanceX;
 @property (assign) float distanceY;
-@property(nonatomic, retain) NSString *witchMove;
+@property(nonatomic, strong) NSString *witchMove;
 
 - (id) init;
 - (void) dealloc;

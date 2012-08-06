@@ -14,5 +14,5 @@
     
 }
 
-@property (nonatomic, retain) IBOutlet UIView *puzzleView;
+@property (nonatomic, strong) IBOutlet UIView *puzzleView;
 @end

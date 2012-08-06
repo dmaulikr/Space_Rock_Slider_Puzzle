@@ -156,7 +156,7 @@ static NSInteger tileVertexSize = 2;
     if ([emptyPosition isEqualToString:@"F"]) tile.emptyPosition = CGPointMake(tile.pF.x, tile.pF.y);
     
     
-    return [tile autorelease];
+    return tile;
     
 }
 

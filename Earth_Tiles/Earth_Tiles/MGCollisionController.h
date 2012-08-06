@@ -18,7 +18,7 @@
 	NSMutableArray * collidersToCheck;
 }
 
-@property (retain) NSArray * sceneObjects;
+@property (strong) NSArray * sceneObjects;
 
 - (void)awake;
 - (void)handleCollisions;

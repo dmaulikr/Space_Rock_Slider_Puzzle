@@ -41,19 +41,19 @@
 
 -(void)loadAtlasData:(NSString*)atlasName
 {
-	NSAutoreleasePool * apool = [[NSAutoreleasePool alloc] init];	
-	if (quadLibrary == nil) quadLibrary = [[NSMutableDictionary alloc] init];
-	
-	CGSize atlasSize = [self loadTextureImage:[atlasName stringByAppendingPathExtension:@"png"] materialKey:atlasName];
+	@autoreleasepool {	
+		if (quadLibrary == nil) quadLibrary = [[NSMutableDictionary alloc] init];
+		
+		CGSize atlasSize = [self loadTextureImage:[atlasName stringByAppendingPathExtension:@"png"] materialKey:atlasName];
     
-	NSArray * itemData = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:atlasName ofType:@"plist"]];
-	
-	for (NSDictionary * record in itemData) {
-		TextureQuad * quad = [self texturedQuadFromAtlasRecord:record atlasSize:atlasSize materialKey:atlasName];
-		[quadLibrary setObject:quad forKey:[record objectForKey:@"name"]];
+		NSArray * itemData = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:atlasName ofType:@"plist"]];
+		
+		for (NSDictionary * record in itemData) {
+			TextureQuad * quad = [self texturedQuadFromAtlasRecord:record atlasSize:atlasSize materialKey:atlasName];
+			[quadLibrary setObject:quad forKey:[record objectForKey:@"name"]];
+		}
+		[self bindMaterial:atlasName];
 	}
-	[self bindMaterial:atlasName];
-	[apool release];
 }
 
 -(TextureQuad*)quadFromAtlasKey:(NSString*)atlasKey
@@ -67,7 +67,7 @@
 	for (NSString * key in atlasKeys) {
 		[animation addFrame:[self quadFromAtlasKey:key]];
 	}
-	return [animation autorelease];
+	return animation;
 }
 
 -(TextureQuad*)texturedQuadFromAtlasRecord:(NSDictionary*)record 
@@ -102,7 +102,7 @@
 	
 	quad.materialKey = key;
 	
-	return [quad autorelease];
+	return quad;
 }
 
 // grabs the openGL texture ID from the library and calls the openGL bind texture method
@@ -191,7 +191,6 @@
 	} else {
 		return CGSizeZero;
 	}
-	[uiImage release];
 	
 	if (materialLib == nil) materialLib = [[NSMutableDictionary alloc] init];
 	
@@ -202,11 +201,6 @@
 
 
 
-- (void) dealloc
-{
-	[materialLib release];
-	[super dealloc];
-}
 
 
 @end

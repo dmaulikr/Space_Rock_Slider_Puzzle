@@ -19,5 +19,5 @@ NSString * materialKey;
 }
 
 @property (assign) GLfloat * uvCoordinates;
-@property (retain) NSString * materialKey;
+@property (strong) NSString * materialKey;
 @end

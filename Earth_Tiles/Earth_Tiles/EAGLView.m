@@ -18,7 +18,7 @@
 // A class extension to declare private methods
 @interface EAGLView ()
 
-@property (nonatomic, retain) EAGLContext *context;
+@property (nonatomic, strong) EAGLContext *context;
 
 - (BOOL) createFramebuffer;
 - (void) destroyFramebuffer;
@@ -49,7 +49,6 @@
         context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
         
         if (!context || ![EAGLContext setCurrentContext:context]) {
-            [self release];
             return nil;
         }
         self.multipleTouchEnabled = NO;
@@ -184,8 +183,6 @@
         [EAGLContext setCurrentContext:nil];
     }
     
-    [context release];  
-    [super dealloc];
 }
 
 

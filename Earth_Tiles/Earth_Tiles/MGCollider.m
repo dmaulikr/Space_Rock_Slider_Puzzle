@@ -49,7 +49,7 @@
 	}
     
 	collider.checkForCollision = NO;
-	return [collider autorelease];	
+	return collider;	
 }
 
 -(void)updateCollider:(SceneObject*)sceneObject
@@ -138,10 +138,6 @@
 	glPopMatrix();
 }
 
--(void)dealloc{
-    
-    [super dealloc];
-}
 
 
 @end
