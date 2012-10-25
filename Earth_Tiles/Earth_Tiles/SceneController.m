@@ -22,7 +22,7 @@
 @implementation SceneController
 
 @synthesize inputController, openGLView;
-@synthesize animationInterval, animationTimer, levelStartDate, deltaTime;
+@synthesize animationInterval, levelStartDate, deltaTime;
 
 // Singleton accessor.  this is how you should ALWAYS get a reference
 // to the scene controller.  Never init your own. 
@@ -91,7 +91,7 @@
 
 -(void) startScene
 {
-	self.animationInterval = 1.0/60.0;
+	
 	[self startAnimation];
     // reset our clock
 	self.levelStartDate = [NSDate date];
@@ -157,24 +157,12 @@
 // these methods are copied over from the EAGLView template
 
 - (void)startAnimation {
-	self.animationTimer = [NSTimer scheduledTimerWithTimeInterval:animationInterval target:self selector:@selector(gameLoop) userInfo:nil repeats:YES];
+	animationDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(gameLoop)];
+    [animationDisplayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
 }
 
 - (void)stopAnimation {
-	self.animationTimer = nil;
-}
-
-- (void)setAnimationTimer:(NSTimer *)newTimer {
-	[animationTimer invalidate];
-	animationTimer = newTimer;
-}
-
-- (void)setAnimationInterval:(NSTimeInterval)interval {	
-	animationInterval = interval;
-	if (animationTimer) {
-		[self stopAnimation];
-		[self startAnimation];
-	}
+	animationDisplayLink = nil;
 }
 
 - (CGPoint)findTheEmptySpaceWithStarter:(CGPoint)startingTile andLastSpace:(CGPoint)lastEmptySpace{

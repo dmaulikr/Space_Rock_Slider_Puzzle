@@ -11,6 +11,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+
 @class InputVC;
 @class EAGLView;
 @class MGCollisionController;
@@ -24,7 +26,7 @@
 	InputVC * inputController;
 	EAGLView * openGLView;
 	
-	NSTimer *__unsafe_unretained animationTimer;
+    CADisplayLink *animationDisplayLink;
 	NSTimeInterval animationInterval;
     
     MGCollisionController *collisionController;
@@ -42,7 +44,6 @@
 @property (strong) NSDate * levelStartDate;
 @property NSTimeInterval deltaTime;
 @property NSTimeInterval animationInterval;
-@property (nonatomic, unsafe_unretained) NSTimer *animationTimer;
 
 + (SceneController*)sharedSceneController;
 - (void) dealloc;
@@ -50,8 +51,6 @@
 - (void) startScene;
 - (void)gameLoop;
 - (void)renderScene;
-- (void)setAnimationInterval:(NSTimeInterval)interval ;
-- (void)setAnimationTimer:(NSTimer *)newTimer ;
 - (void)startAnimation ;
 - (void)stopAnimation ;
 - (void)updateModel;
